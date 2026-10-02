@@ -25,16 +25,9 @@ main > header.nav > .brand:after{
   font-size:9.5px;font-weight:700;line-height:10px;letter-spacing:2.65px;white-space:nowrap;
 }
 main > header.nav > nav{display:flex;align-items:center;justify-content:center;gap:38px;margin:0 28px;}
-main > header.nav > nav a{
-  position:relative;color:#211d19;text-decoration:none;font-size:15px;font-weight:400;white-space:nowrap;
-}
+main > header.nav > nav a{position:relative;color:#211d19;text-decoration:none;font-size:15px;font-weight:400;white-space:nowrap;}
 main > header.nav > nav a:hover{color:#c96518;}
-main > header.nav > .book{
-  flex:0 0 auto;margin:0;padding:17px 28px;border-radius:999px;
-  display:inline-flex;align-items:center;gap:10px;
-  background:#eb7924;color:#fff;text-decoration:none;
-  font-size:15px;font-weight:700;line-height:1;box-shadow:0 12px 28px rgba(235,121,36,.18);
-}
+main > header.nav > .book{flex:0 0 auto;margin:0;padding:17px 28px;border-radius:999px;display:inline-flex;align-items:center;gap:10px;background:#eb7924;color:#fff;text-decoration:none;font-size:15px;font-weight:700;line-height:1;box-shadow:0 12px 28px rgba(235,121,36,.18);}
 
 @media (max-width:1180px) and (min-width:1051px){
   main > header.nav{padding-left:4vw;padding-right:4vw;}
@@ -44,39 +37,35 @@ main > header.nav > .book{
 }
 
 @media (max-width:1050px){
-  main > header.nav{
-    height:80px;padding:18px 20px;
-    display:flex;align-items:center;justify-content:space-between;
-  }
+  /* Reference site: 375px viewport, 80px header, 20px horizontal inset. */
+  main > header.nav{height:80px;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;}
   main > header.nav > nav{display:none!important;}
+
+  /* Keep the logo block within the same footprint as the live site so the
+     subtitle never collides with the menu button on narrow devices. */
   main > header.nav > .brand{
-    min-width:0;width:auto;height:44px;padding-left:52px;
-    font-size:19px;line-height:19px;
+    flex:0 0 239px;min-width:0;width:239px;height:44px;padding-left:52px;
+    font-size:19px;line-height:19px;letter-spacing:.19px;
+    overflow:visible;
   }
   main > header.nav > .brand:before{width:42px;height:40px;top:2px;}
   main > header.nav > .brand:after{
-    left:52px;top:27px;font-size:9px;line-height:9px;letter-spacing:2.3px;
+    left:52px;top:27px;font-size:9px;line-height:9px;letter-spacing:2.05px;
+    transform-origin:left top;white-space:nowrap;
   }
-  /* Current page markup still uses the consultation CTA as the third header child.
-     On mobile render it as the reference site's square menu control instead of
-     inheriting the legacy orange circular CTA treatment. */
+
+  /* The current component's CTA doubles as the visual mobile menu control. */
   main > header.nav > .book{
-    position:relative;width:44px;height:44px;min-width:44px;padding:0;margin:0;
+    position:relative;flex:0 0 44px;width:44px;height:44px;min-width:44px;padding:0;margin:0;
     border:1px solid #e9e3da;border-radius:10px;background:#fff;box-shadow:none;
-    color:transparent;font-size:0;gap:0;overflow:hidden;
-    display:block;
+    color:transparent;font-size:0;gap:0;overflow:hidden;display:block;
   }
   main > header.nav > .book svg{display:none!important;}
-  main > header.nav > .book:before,
-  main > header.nav > .book:after{
-    content:"";position:absolute;left:12px;width:18px;height:1.5px;border-radius:2px;background:#28231f;
-  }
-  main > header.nav > .book:before{top:14px;box-shadow:0 7px 0 #28231f,0 14px 0 #28231f;}
-  main > header.nav > .book:after{display:none;}
+  main > header.nav > .book:before{content:"";position:absolute;left:12px;top:14px;width:18px;height:1.5px;border-radius:2px;background:#28231f;box-shadow:0 7px 0 #28231f,0 14px 0 #28231f;}
 }
 
 @media (max-width:390px){
   main > header.nav{padding-left:20px;padding-right:20px;}
-  main > header.nav > .brand{padding-left:52px;font-size:19px;}
-  main > header.nav > .brand:after{left:52px;font-size:8.7px;letter-spacing:2.15px;}
+  main > header.nav > .brand{flex-basis:239px;width:239px;padding-left:52px;font-size:19px;}
+  main > header.nav > .brand:after{left:52px;font-size:8.7px;letter-spacing:1.95px;}
 }
