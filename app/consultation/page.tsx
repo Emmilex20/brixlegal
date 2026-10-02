@@ -1,1 +1,371 @@
-InVzZSBjbGllbnQiOwoKaW1wb3J0IHsgQXJyb3dMZWZ0LCBBcnJvd1JpZ2h0LCBDaGVja0NpcmNsZTIgfSBmcm9tICJsdWNpZGUtcmVhY3QiOwppbXBvcnQgTGluayBmcm9tICJuZXh0L2xpbmsiOwppbXBvcnQgeyBGb3JtRXZlbnQsIHVzZVN0YXRlIH0gZnJvbSAicmVhY3QiOwoKY29uc3QgcHJhY3RpY2VBcmVhcyA9IFsKICAiQ29ycG9yYXRlIFByYWN0aWNlIiwKICAiQ29tbWVyY2lhbCBMYXciLAogICJSZWd1bGF0b3J5ICYgU3RhdHV0b3J5IENvbXBsaWFuY2UiLAogICJBbHRlcm5hdGl2ZSBEaXNwdXRlIFJlc29sdXRpb24iLAogICJUYXhhdGlvbiBMYXciLAogICJSZWFsIEVzdGF0ZSAmIFByb3BlcnR5IExhdyIsCiAgIkVtcGxveW1lbnQgTGF3IiwKICAiSW50ZWxsZWN0dWFsIFByb3BlcnR5IiwKICAiQnVzaW5lc3MgU3RydWN0dXJpbmcgJiBNYW5hZ2VtZW50IiwKICAiTGVnYWN5IEJ1aWxkaW5nIiwKICAiTWVkaWEgJiBFbnRlcnRhaW5tZW50IExhdyIsCiAgIkxpdGlnYXRpb24iLAogICJTb2NpYWwgSnVzdGljZSIsCiAgIkdlbmVyYWwgTGVnYWwgQ291bnNlbCIsCl07Cgpjb25zdCBzdGVwcyA9IFsiWW91ciBpbmZvcm1hdGlvbiIsICJMZWdhbCBtYXR0ZXIiLCAiQ29uc3VsdGF0aW9uIiwgIlJldmlldyJdOwoKdHlwZSBGb3JtRGF0YSA9IHsKICBmdWxsTmFtZTogc3RyaW5nOwogIGVtYWlsOiBzdHJpbmc7CiAgcGhvbmU6IHN0cmluZzsKICBjbGllbnRTdGF0dXM6IHN0cmluZzsKICBvZmZpY2U6IHN0cmluZzsKICBwcmFjdGljZUFyZWE6IHN0cmluZzsKICB1cmdlbmN5OiBzdHJpbmc7CiAgbWF0dGVyOiBzdHJpbmc7CiAgY29uc3VsdGF0aW9uVHlwZTogc3RyaW5nOwogIGRhdGU6IHN0cmluZzsKICB0aW1lOiBzdHJpbmc7CiAgY29uc2VudDogYm9vbGVhbjsKfTsKCmNvbnN0IGluaXRpYWxEYXRhOiBGb3JtRGF0YSA9IHsKICBmdWxsTmFtZTogIiIsCiAgZW1haWw6ICIiLAogIHBob25lOiAiIiwKICBjbGllbnRTdGF0dXM6ICJOZXcgY2xpZW50IiwKICBvZmZpY2U6ICIiLAogIHByYWN0aWNlQXJlYTogIiIsCiAgdXJnZW5jeTogIlN0YW5kYXJkIiwKICBtYXR0ZXI6ICIiLAogIGNvbnN1bHRhdGlvblR5cGU6ICIiLAogIGRhdGU6ICIiLAogIHRpbWU6ICIiLAogIGNvbnNlbnQ6IGZhbHNlLAp9OwoKZnVuY3Rpb24gQnJpeEJyYW5kKCkgewogIHJldHVybiAoCiAgICA8c3BhbiBjbGFzc05hbWU9ImJyYW5kIj4KICAgICAgPGltZyBzcmM9Ii9icml4LWxlZ2FsLWVtYmxlbS53ZWJwIiBhbHQ9IiIgYXJpYS1oaWRkZW49InRydWUiIC8+CiAgICAgIDxzcGFuPgogICAgICAgIDxzdHJvbmc+QnJpeCBMZWdhbDwvc3Ryb25nPgogICAgICAgIDxzbWFsbD5QcmFjdGljZSAmYW1wOyBDb25zdWx0YW5jeTwvc21hbGw+CiAgICAgIDwvc3Bhbj4KICAgIDwvc3Bhbj4KICApOwp9CgpleHBvcnQgZGVmYXVsdCBmdW5jdGlvbiBDb25zdWx0YXRpb25QYWdlKCkgewogIGNvbnN0IFtzdGVwLCBzZXRTdGVwXSA9IHVzZVN0YXRlKDEpOwogIGNvbnN0IFtmb3JtRGF0YSwgc2V0Rm9ybURhdGFdID0gdXNlU3RhdGU8Rm9ybURhdGE+KGluaXRpYWxEYXRhKTsKICBjb25zdCBbZXJyb3IsIHNldEVycm9yXSA9IHVzZVN0YXRlKCIiKTsKICBjb25zdCBbc3VibWl0dGVkLCBzZXRTdWJtaXR0ZWRdID0gdXNlU3RhdGUoZmFsc2UpOwogIGNvbnN0IFtyZWZlcmVuY2UsIHNldFJlZmVyZW5jZV0gPSB1c2VTdGF0ZSgiIik7CgogIGNvbnN0IHVwZGF0ZUZpZWxkID0gPEtleSBleHRlbmRzIGtleW9mIEZvcm1EYXRhPihrZXk6IEtleSwgdmFsdWU6IEZvcm1EYXRhW0tleV0pID0+IHsKICAgIHNldEZvcm1EYXRhKChjdXJyZW50KSA9PiAoeyAuLi5jdXJyZW50LCBba2V5XTogdmFsdWUgfSkpOwogICAgc2V0RXJyb3IoIiIpOwogIH07CgogIGNvbnN0IHZhbGlkYXRlU3RlcCA9ICgpID0+IHsKICAgIGlmIChzdGVwID09PSAxICYmICghZm9ybURhdGEuZnVsbE5hbWUgfHwgIWZvcm1EYXRhLmVtYWlsIHx8ICFmb3JtRGF0YS5waG9uZSB8fCAhZm9ybURhdGEub2ZmaWNlKSkgewogICAgICByZXR1cm4gIlBsZWFzZSBjb21wbGV0ZSB5b3VyIGNvbnRhY3QgaW5mb3JtYXRpb24gYW5kIHByZWZlcnJlZCBvZmZpY2UuIjsKICAgIH0KCiAgICBpZiAoc3RlcCA9PT0gMiAmJiAoIWZvcm1EYXRhLnByYWN0aWNlQXJlYSB8fCAhZm9ybURhdGEubWF0dGVyKSkgewogICAgICByZXR1cm4gIlBsZWFzZSBzZWxlY3QgYSBwcmFjdGljZSBhcmVhIGFuZCBicmllZmx5IGRlc2NyaWJlIHlvdXIgbWF0dGVyLiI7CiAgICB9CgogICAgaWYgKHN0ZXAgPT09IDMgJiYgKCFmb3JtRGF0YS5jb25zdWx0YXRpb25UeXBlIHx8ICFmb3JtRGF0YS5kYXRlIHx8ICFmb3JtRGF0YS50aW1lKSkgewogICAgICByZXR1cm4gIlBsZWFzZSBjaG9vc2UgYSBjb25zdWx0YXRpb24gdHlwZSwgcHJlZmVycmVkIGRhdGUgYW5kIHRpbWUuIjsKICAgIH0KCiAgICBpZiAoc3RlcCA9PT0gNCAmJiAhZm9ybURhdGEuY29uc2VudCkgewogICAgICByZXR1cm4gIlBsZWFzZSBjb25maXJtIHRoZSBkZWNsYXJhdGlvbiBiZWZvcmUgc3VibWl0dGluZyB5b3VyIHJlcXVlc3QuIjsKICAgIH0KCiAgICByZXR1cm4gIiI7CiAgfTsKCiAgY29uc3QgaGFuZGxlTmV4dCA9ICgpID0+IHsKICAgIGNvbnN0IHZhbGlkYXRpb25NZXNzYWdlID0gdmFsaWRhdGVTdGVwKCk7CiAgICBpZiAodmFsaWRhdGlvbk1lc3NhZ2UpIHsKICAgICAgc2V0RXJyb3IodmFsaWRhdGlvbk1lc3NhZ2UpOwogICAgICByZXR1cm47CiAgICB9CgogICAgc2V0U3RlcCgoY3VycmVudCkgPT4gTWF0aC5taW4oY3VycmVudCArIDEsIDQpKTsKICB9OwoKICBjb25zdCBoYW5kbGVTdWJtaXQgPSAoZXZlbnQ6IEZvcm1FdmVudDxIVE1MRm9ybUVsZW1lbnQ+KSA9PiB7CiAgICBldmVudC5wcmV2ZW50RGVmYXVsdCgpOwogICAgY29uc3QgdmFsaWRhdGlvbk1lc3NhZ2UgPSB2YWxpZGF0ZVN0ZXAoKTsKCiAgICBpZiAodmFsaWRhdGlvbk1lc3NhZ2UpIHsKICAgICAgc2V0RXJyb3IodmFsaWRhdGlvbk1lc3NhZ2UpOwogICAgICByZXR1cm47CiAgICB9CgogICAgc2V0UmVmZXJlbmNlKGBCUlgtJHtuZXcgRGF0ZSgpLmdldEZ1bGxZZWFyKCl9LSR7TWF0aC5mbG9vcigxMDAwICsgTWF0aC5yYW5kb20oKSAqIDkwMDApfWApOwogICAgc2V0U3VibWl0dGVkKHRydWUpOwogIH07CgogIGlmIChzdWJtaXR0ZWQpIHsKICAgIHJldHVybiAoCiAgICAgIDxtYWluIGNsYXNzTmFtZT0iY29uc3VsdC1zdWNjZXNzIj4KICAgICAgICA8c2VjdGlvbiBjbGFzc05hbWU9ImNvbnN1bHQtc3VjY2Vzc19fY2FyZCI+CiAgICAgICAgICA8Q2hlY2tDaXJjbGUyIHNpemU9ezU2fSBzdHJva2VXaWR0aD17MS41fSAvPgogICAgICAgICAgPGgxPkNvbnN1bHRhdGlvbiByZXF1ZXN0IHJlY2VpdmVkLjwvaDE+CiAgICAgICAgICA8cD4KICAgICAgICAgICAgWW91ciByZWZlcmVuY2UgaXMgPHN0cm9uZz57cmVmZXJlbmNlfTwvc3Ryb25nPi4gVGhlIEJyaXggTGVnYWwgdGVhbSB3aWxsIHJldmlldyB5b3VyIHJlcXVlc3QKICAgICAgICAgICAgYW5kIGNvbnRhY3QgeW91IHRvIGNvbmZpcm0gdGhlIGFwcG9pbnRtZW50LgogICAgICAgICAgPC9wPgogICAgICAgICAgPExpbmsgY2xhc3NOYW1lPSJidXR0b24gYnV0dG9uLS1wcmltYXJ5IiBocmVmPSIvIj4KICAgICAgICAgICAgUmV0dXJuIHRvIEJyaXggTGVnYWwKICAgICAgICAgIDwvTGluaz4KICAgICAgICA8L3NlY3Rpb24+CiAgICAgIDwvbWFpbj4KICAgICk7CiAgfQoKICByZXR1cm4gKAogICAgPG1haW4gY2xhc3NOYW1lPSJjb25zdWx0LXBhZ2UiPgogICAgICA8c2VjdGlvbiBjbGFzc05hbWU9ImNvbnN1bHQtc2hlbGwiPgogICAgICAgIDxhc2lkZSBjbGFzc05hbWU9ImNvbnN1bHQtc2lkZWJhciI+CiAgICAgICAgICA8TGluayBjbGFzc05hbWU9ImNvbnN1bHQtYmFjayIgaHJlZj0iLyI+CiAgICAgICAgICAgIDxBcnJvd0xlZnQgc2l6ZT17MTV9IC8+IEJhY2sgdG8gd2Vic2l0ZQogICAgICAgICAgPC9MaW5rPgogICAgICAgICAgPEJyaXhCcmFuZCAvPgogICAgICAgICAgPGgxPkJvb2sgYSBDb25zdWx0YXRpb248L2gxPgogICAgICAgICAgPHA+QSBndWlkZWQgaW50YWtlIHRoYXQga2VlcHMgeW91ciBtYXR0ZXIgb3JnYW5pc2VkIGZyb20gZmlyc3QgY29udGFjdC48L3A+CiAgICAgICAgICA8b2wgY2xhc3NOYW1lPSJjb25zdWx0LXByb2dyZXNzIj4KICAgICAgICAgICAge3N0ZXBzLm1hcCgobGFiZWwsIGluZGV4KSA9PiB7CiAgICAgICAgICAgICAgY29uc3QgbnVtYmVyID0gaW5kZXggKyAxOwogICAgICAgICAgICAgIGNvbnN0IHN0YXRlQ2xhc3MgPSBudW1iZXIgPT09IHN0ZXAgPyAiaXMtYWN0aXZlIiA6IG51bWJlciA8IHN0ZXAgPyAiaXMtY29tcGxldGUiIDogIiI7CgogICAgICAgICAgICAgIHJldHVybiAoCiAgICAgICAgICAgICAgICA8bGkga2V5PXtsYWJlbH0gY2xhc3NOYW1lPXtzdGF0ZUNsYXNzfT4KICAgICAgICAgICAgICAgICAgPHNwYW4+e1N0cmluZyhudW1iZXIpLnBhZFN0YXJ0KDIsICIwIil9PC9zcGFuPgogICAgICAgICAgICAgICAgICB7bGFiZWx9CiAgICAgICAgICAgICAgICA8L2xpPgogICAgICAgICAgICAgICk7CiAgICAgICAgICAgIH0pfQogICAgICAgICAgPC9vbD4KICAgICAgICA8L2FzaWRlPgoKICAgICAgICA8Zm9ybSBjbGFzc05hbWU9ImNvbnN1bHQtcGFuZWwiIG9uU3VibWl0PXtoYW5kbGVTdWJtaXR9PgogICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPSJjb25zdWx0LXBhbmVsX19leWVicm93Ij5TdGVwIHtzdGVwfSBvZiA0PC9zcGFuPgoKICAgICAgICAgIHtzdGVwID09PSAxICYmICgKICAgICAgICAgICAgPD4KICAgICAgICAgICAgICA8aDI+WW91ciBpbmZvcm1hdGlvbjwvaDI+CiAgICAgICAgICAgICAgPHA+VGVsbCB1cyBob3cgdG8gcmVhY2ggeW91IGFuZCB3aGljaCBvZmZpY2UgaXMgbW9zdCBjb252ZW5pZW50LjwvcD4KICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0iY29uc3VsdC1ncmlkIj4KICAgICAgICAgICAgICAgIDxsYWJlbCBjbGFzc05hbWU9ImNvbnN1bHQtZmllbGQgY29uc3VsdC1maWVsZC0tZnVsbCI+CiAgICAgICAgICAgICAgICAgIEZ1bGwgbmFtZQogICAgICAgICAgICAgICAgICA8aW5wdXQKICAgICAgICAgICAgICAgICAgICB0eXBlPSJ0ZXh0IgogICAgICAgICAgICAgICAgICAgIHZhbHVlPXtmb3JtRGF0YS5mdWxsTmFtZX0KICAgICAgICAgICAgICAgICAgICBvbkNoYW5nZT17KGV2ZW50KSA9PiB1cGRhdGVGaWVsZCgiZnVsbE5hbWUiLCBldmVudC50YXJnZXQudmFsdWUpfQogICAgICAgICAgICAgICAgICAgIHBsYWNlaG9sZGVyPSJZb3VyIGZ1bGwgbmFtZSIKICAgICAgICAgICAgICAgICAgICBhdXRvQ29tcGxldGU9Im5hbWUiCiAgICAgICAgICAgICAgICAgIC8+CiAgICAgICAgICAgICAgICA8L2xhYmVsPgogICAgICAgICAgICAgICAgPGxhYmVsIGNsYXNzTmFtZT0iY29uc3VsdC1maWVsZCI+CiAgICAgICAgICAgICAgICAgIEVtYWlsIGFkZHJlc3MKICAgICAgICAgICAgICAgICAgPGlucHV0CiAgICAgICAgICAgICAgICAgICAgdHlwZT0iZW1haWwiCiAgICAgICAgICAgICAgICAgICAgdmFsdWU9e2Zvcm1EYXRhLmVtYWlsfQogICAgICAgICAgICAgICAgICAgIG9uQ2hhbmdlPXsoZXZlbnQpID0+IHVwZGF0ZUZpZWxkKCJlbWFpbCIsIGV2ZW50LnRhcmdldC52YWx1ZSl9CiAgICAgICAgICAgICAgICAgICAgcGxhY2Vob2xkZXI9InlvdUBleGFtcGxlLmNvbSIKICAgICAgICAgICAgICAgICAgICBhdXRvQ29tcGxldGU9ImVtYWlsIgogICAgICAgICAgICAgICAgICAvPgogICAgICAgICAgICAgICAgPC9sYWJlbD4KICAgICAgICAgICAgICAgIDxsYWJlbCBjbGFzc05hbWU9ImNvbnN1bHQtZmllbGQiPgogICAgICAgICAgICAgICAgICBQaG9uZSBudW1iZXIKICAgICAgICAgICAgICAgICAgPGlucHV0CiAgICAgICAgICAgICAgICAgICAgdHlwZT0idGVsIgogICAgICAgICAgICAgICAgICAgIHZhbHVlPXtmb3JtRGF0YS5waG9uZX0KICAgICAgICAgICAgICAgICAgICBvbkNoYW5nZT17KGV2ZW50KSA9PiB1cGRhdGVGaWVsZCgicGhvbmUiLCBldmVudC50YXJnZXQudmFsdWUpfQogICAgICAgICAgICAgICAgICAgIHBsYWNlaG9sZGVyPSIrMjM0IgogICAgICAgICAgICAgICAgICAgIGF1dG9Db21wbGV0ZT0idGVsIgogICAgICAgICAgICAgICAgICAvPgogICAgICAgICAgICAgICAgPC9sYWJlbD4KICAgICAgICAgICAgICAgIDxsYWJlbCBjbGFzc05hbWU9ImNvbnN1bHQtZmllbGQiPgogICAgICAgICAgICAgICAgICBDbGllbnQgc3RhdHVzCiAgICAgICAgICAgICAgICAgIDxzZWxlY3QKICAgICAgICAgICAgICAgICAgICB2YWx1ZT17Zm9ybURhdGEuY2xpZW50U3RhdHVzfQogICAgICAgICAgICAgICAgICAgIG9uQ2hhbmdlPXsoZXZlbnQpID0+IHVwZGF0ZUZpZWxkKCJjbGllbnRTdGF0dXMiLCBldmVudC50YXJnZXQudmFsdWUpfQogICAgICAgICAgICAgICAgICA+CiAgICAgICAgICAgICAgICAgICAgPG9wdGlvbj5OZXcgY2xpZW50PC9vcHRpb24+CiAgICAgICAgICAgICAgICAgICAgPG9wdGlvbj5FeGlzdGluZyBjbGllbnQ8L29wdGlvbj4KICAgICAgICAgICAgICAgICAgPC9zZWxlY3Q+CiAgICAgICAgICAgICAgICA8L2xhYmVsPgogICAgICAgICAgICAgICAgPGxhYmVsIGNsYXNzTmFtZT0iY29uc3VsdC1maWVsZCI+CiAgICAgICAgICAgICAgICAgIFByZWZlcnJlZCBvZmZpY2UKICAgICAgICAgICAgICAgICAgPHNlbGVjdCB2YWx1ZT17Zm9ybURhdGEub2ZmaWNlfSBvbkNoYW5nZT17KGV2ZW50KSA9PiB1cGRhdGVGaWVsZCgib2ZmaWNlIiwgZXZlbnQudGFyZ2V0LnZhbHVlKX0+CiAgICAgICAgICAgICAgICAgICAgPG9wdGlvbiB2YWx1ZT0iIj5TZWxlY3Qgb2ZmaWNlPC9vcHRpb24+CiAgICAgICAgICAgICAgICAgICAgPG9wdGlvbj5BYnVqYTwvb3B0aW9uPgogICAgICAgICAgICAgICAgICAgIDxvcHRpb24+Q2FsYWJhcjwvb3B0aW9uPgogICAgICAgICAgICAgICAgICAgIDxvcHRpb24+UmVtb3RlIGNvbnN1bHRhdGlvbjwvb3B0aW9uPgogICAgICAgICAgICAgICAgICA8L3NlbGVjdD4KICAgICAgICAgICAgICAgIDwvbGFiZWw+CiAgICAgICAgICAgICAgPC9kaXY+CiAgICAgICAgICAgIDwvPgogICAgICAgICAgKX0KCiAgICAgICAgICB7c3RlcCA9PT0gMiAmJiAoCiAgICAgICAgICAgIDw+CiAgICAgICAgICAgICAgPGgyPlRlbGwgdXMgYWJvdXQgeW91ciBtYXR0ZXI8L2gyPgogICAgICAgICAgICAgIDxwPkEgc2hvcnQgb3ZlcnZpZXcgaGVscHMgdGhlIHJpZ2h0IGxlZ2FsIHByb2Zlc3Npb25hbCBwcmVwYXJlIGZvciB5b3VyIGNvbnN1bHRhdGlvbi48L3A+CiAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9ImNvbnN1bHQtZ3JpZCI+CiAgICAgICAgICAgICAgICA8bGFiZWwgY2xhc3NOYW1lPSJjb25zdWx0LWZpZWxkIj4KICAgICAgICAgICAgICAgICAgQXJlYSBvZiBsZWdhbCBzZXJ2aWNlCiAgICAgICAgICAgICAgICAgIDxzZWxlY3QKICAgICAgICAgICAgICAgICAgICB2YWx1ZT17Zm9ybURhdGEucHJhY3RpY2VBcmVhfQogICAgICAgICAgICAgICAgICAgIG9uQ2hhbmdlPXsoZXZlbnQpID0+IHVwZGF0ZUZpZWxkKCJwcmFjdGljZUFyZWEiLCBldmVudC50YXJnZXQudmFsdWUpfQogICAgICAgICAgICAgICAgICA+CiAgICAgICAgICAgICAgICAgICAgPG9wdGlvbiB2YWx1ZT0iIj5TZWxlY3QgcHJhY3RpY2UgYXJlYTwvb3B0aW9uPgogICAgICAgICAgICAgICAgICAgIHtwcmFjdGljZUFyZWFzLm1hcCgoYXJlYSkgPT4gKAogICAgICAgICAgICAgICAgICAgICAgPG9wdGlvbiBrZXk9e2FyZWF9PnthcmVhfTwvb3B0aW9uPgogICAgICAgICAgICAgICAgICAgICkpfQogICAgICAgICAgICAgICAgICA8L3NlbGVjdD4KICAgICAgICAgICAgICAgIDwvbGFiZWw+CiAgICAgICAgICAgICAgICA8bGFiZWwgY2xhc3NOYW1lPSJjb25zdWx0LWZpZWxkIj4KICAgICAgICAgICAgICAgICAgVXJnZW5jeQogICAgICAgICAgICAgICAgICA8c2VsZWN0IHZhbHVlPXtmb3JtRGF0YS51cmdlbmN5fSBvbkNoYW5nZT17KGV2ZW50KSA9PiB1cGRhdGVGaWVsZCgidXJnZW5jeSIsIGV2ZW50LnRhcmdldC52YWx1ZSl9PgogICAgICAgICAgICAgICAgICAgIDxvcHRpb24+U3RhbmRhcmQ8L29wdGlvbj4KICAgICAgICAgICAgICAgICAgICA8b3B0aW9uPlRpbWUtc2Vuc2l0aXZlPC9vcHRpb24+CiAgICAgICAgICAgICAgICAgICAgPG9wdGlvbj5VcmdlbnQ8L29wdGlvbj4KICAgICAgICAgICAgICAgICAgPC9zZWxlY3Q+CiAgICAgICAgICAgICAgICA8L2xhYmVsPgogICAgICAgICAgICAgICAgPGxhYmVsIGNsYXNzTmFtZT0iY29uc3VsdC1maWVsZCBjb25zdWx0LWZpZWxkLS1mdWxsIj4KICAgICAgICAgICAgICAgICAgQnJpZWYgZGVzY3JpcHRpb24KICAgICAgICAgICAgICAgICAgPHRleHRhcmVhCiAgICAgICAgICAgICAgICAgICAgdmFsdWU9e2Zvcm1EYXRhLm1hdHRlcn0KICAgICAgICAgICAgICAgICAgICBvbkNoYW5nZT17KGV2ZW50KSA9PiB1cGRhdGVGaWVsZCgibWF0dGVyIiwgZXZlbnQudGFyZ2V0LnZhbHVlKX0KICAgICAgICAgICAgICAgICAgICBwbGFjZWhvbGRlcj0iQnJpZWZseSBkZXNjcmliZSB5b3VyIGxlZ2FsIG1hdHRlciIKICAgICAgICAgICAgICAgICAgLz4KICAgICAgICAgICAgICAgIDwvbGFiZWw+CiAgICAgICAgICAgICAgICA8bGFiZWwgY2xhc3NOYW1lPSJjb25zdWx0LWZpZWxkIGNvbnN1bHQtZmllbGQtLWZ1bGwiPgogICAgICAgICAgICAgICAgICBTdXBwb3J0aW5nIGRvY3VtZW50cyAob3B0aW9uYWwpCiAgICAgICAgICAgICAgICAgIDxpbnB1dCB0eXBlPSJmaWxlIiBtdWx0aXBsZSAvPgogICAgICAgICAgICAgICAgPC9sYWJlbD4KICAgICAgICAgICAgICA8L2Rpdj4KICAgICAgICAgICAgPC8+CiAgICAgICAgICApfQoKICAgICAgICAgIHtzdGVwID09PSAzICYmICgKICAgICAgICAgICAgPD4KICAgICAgICAgICAgICA8aDI+Q2hvb3NlIHlvdXIgY29uc3VsdGF0aW9uPC9oMj4KICAgICAgICAgICAgICA8cD5TZWxlY3QgaG93IGFuZCB3aGVuIHlvdSB3b3VsZCBwcmVmZXIgdG8gc3BlYWsgd2l0aCB0aGUgQnJpeCBMZWdhbCB0ZWFtLjwvcD4KICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0iY29uc3VsdC1vcHRpb25zIj4KICAgICAgICAgICAgICAgIHtbIkluIHBlcnNvbiIsICJWaWRlbyBjYWxsIiwgIlBob25lIGNhbGwiXS5tYXAoKHR5cGUpID0+ICgKICAgICAgICAgICAgICAgICAgPGxhYmVsIGtleT17dHlwZX0gY2xhc3NOYW1lPSJjb25zdWx0LW9wdGlvbiI+CiAgICAgICAgICAgICAgICAgICAgPGlucHV0CiAgICAgICAgICAgICAgICAgICAgICB0eXBlPSJyYWRpbyIKICAgICAgICAgICAgICAgICAgICAgIG5hbWU9ImNvbnN1bHRhdGlvblR5cGUiCiAgICAgICAgICAgICAgICAgICAgICBjaGVja2VkPXtmb3JtRGF0YS5jb25zdWx0YXRpb25UeXBlID09PSB0eXBlfQogICAgICAgICAgICAgICAgICAgICAgb25DaGFuZ2U9eygpID0+IHVwZGF0ZUZpZWxkKCJjb25zdWx0YXRpb25UeXBlIiwgdHlwZSl9CiAgICAgICAgICAgICAgICAgICAgLz4KICAgICAgICAgICAgICAgICAgICA8c3Ryb25nPnt0eXBlfTwvc3Ryb25nPgogICAgICAgICAgICAgICAgICAgIDxzbWFsbD57dHlwZSA9PT0gIkluIHBlcnNvbiIgPyBmb3JtRGF0YS5vZmZpY2UgfHwgIkJyaXggTGVnYWwgb2ZmaWNlIiA6ICJSZW1vdGUgY29uc3VsdGF0aW9uIn08L3NtYWxsPgogICAgICAgICAgICAgICAgICA8L2xhYmVsPgogICAgICAgICAgICAgICAgKSl9CiAgICAgICAgICAgICAgPC9kaXY+CiAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9ImNvbnN1bHQtZ3JpZCIgc3R5bGU9e3sgbWFyZ2luVG9wOiAyMiB9fT4KICAgICAgICAgICAgICAgIDxsYWJlbCBjbGFzc05hbWU9ImNvbnN1bHQtZmllbGQiPgogICAgICAgICAgICAgICAgICBQcmVmZXJyZWQgZGF0ZQogICAgICAgICAgICAgICAgICA8aW5wdXQKICAgICAgICAgICAgICAgICAgICB0eXBlPSJkYXRlIgogICAgICAgICAgICAgICAgICAgIHZhbHVlPXtmb3JtRGF0YS5kYXRlfQogICAgICAgICAgICAgICAgICAgIG1pbj17bmV3IERhdGUoKS50b0lTT1N0cmluZygpLnNwbGl0KCJUIilbMF19CiAgICAgICAgICAgICAgICAgICAgb25DaGFuZ2U9eyhldmVudCkgPT4gdXBkYXRlRmllbGQoImRhdGUiLCBldmVudC50YXJnZXQudmFsdWUpfQogICAgICAgICAgICAgICAgICAvPgogICAgICAgICAgICAgICAgPC9sYWJlbD4KICAgICAgICAgICAgICAgIDxsYWJlbCBjbGFzc05hbWU9ImNvbnN1bHQtZmllbGQiPgogICAgICAgICAgICAgICAgICBQcmVmZXJyZWQgdGltZQogICAgICAgICAgICAgICAgICA8c2VsZWN0IHZhbHVlPXtmb3JtRGF0YS50aW1lfSBvbkNoYW5nZT17KGV2ZW50KSA9PiB1cGRhdGVGaWVsZCgidGltZSIsIGV2ZW50LnRhcmdldC52YWx1ZSl9PgogICAgICAgICAgICAgICAgICAgIDxvcHRpb24gdmFsdWU9IiI+U2VsZWN0IHRpbWU8L29wdGlvbj4KICAgICAgICAgICAgICAgICAgICA8b3B0aW9uPjEwOjAwIEFNPC9vcHRpb24+CiAgICAgICAgICAgICAgICAgICAgPG9wdGlvbj4xMTozMCBBTTwvb3B0aW9uPgogICAgICAgICAgICAgICAgICAgIDxvcHRpb24+MTowMCBQTTwvb3B0aW9uPgogICAgICAgICAgICAgICAgICAgIDxvcHRpb24+MzozMCBQTTwvb3B0aW9uPgogICAgICAgICAgICAgICAgICA8L3NlbGVjdD4KICAgICAgICAgICAgICAgIDwvbGFiZWw+CiAgICAgICAgICAgICAgPC9kaXY+CiAgICAgICAgICAgIDwvPgogICAgICAgICAgKX0KCiAgICAgICAgICB7c3RlcCA9PT0gNCAmJiAoCiAgICAgICAgICAgIDw+CiAgICAgICAgICAgICAgPGgyPlJldmlldyB5b3VyIHJlcXVlc3Q8L2gyPgogICAgICAgICAgICAgIDxwPlBsZWFzZSBjb25maXJtIHRoZSBkZXRhaWxzIGJlbG93IGJlZm9yZSBzdWJtaXR0aW5nLjwvcD4KICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0iY29uc3VsdC1yZXZpZXciPgogICAgICAgICAgICAgICAgPGFydGljbGU+CiAgICAgICAgICAgICAgICAgIDxzdHJvbmc+e2Zvcm1EYXRhLmZ1bGxOYW1lfTwvc3Ryb25nPgogICAgICAgICAgICAgICAgICA8c3Bhbj57Zm9ybURhdGEuZW1haWx9IMK3IHtmb3JtRGF0YS5waG9uZX08L3NwYW4+CiAgICAgICAgICAgICAgICA8L2FydGljbGU+CiAgICAgICAgICAgICAgICA8YXJ0aWNsZT4KICAgICAgICAgICAgICAgICAgPHN0cm9uZz57Zm9ybURhdGEucHJhY3RpY2VBcmVhfTwvc3Ryb25nPgogICAgICAgICAgICAgICAgICA8c3Bhbj57Zm9ybURhdGEudXJnZW5jeX0gwrcge2Zvcm1EYXRhLm1hdHRlcn08L3NwYW4+CiAgICAgICAgICAgICAgICA8L2FydGljbGU+CiAgICAgICAgICAgICAgICA8YXJ0aWNsZT4KICAgICAgICAgICAgICAgICAgPHN0cm9uZz57Zm9ybURhdGEuY29uc3VsdGF0aW9uVHlwZX08L3N0cm9uZz4KICAgICAgICAgICAgICAgICAgPHNwYW4+e2Zvcm1EYXRhLmRhdGV9IGF0IHtmb3JtRGF0YS50aW1lfSDCtyB7Zm9ybURhdGEub2ZmaWNlfTwvc3Bhbj4KICAgICAgICAgICAgICAgIDwvYXJ0aWNsZT4KICAgICAgICAgICAgICA8L2Rpdj4KICAgICAgICAgICAgICA8bGFiZWwgY2xhc3NOYW1lPSJjb25zdWx0LWNvbnNlbnQiPgogICAgICAgICAgICAgICAgPGlucHV0CiAgICAgICAgICAgICAgICAgIHR5cGU9ImNoZWNrYm94IgogICAgICAgICAgICAgICAgICBjaGVja2VkPXtmb3JtRGF0YS5jb25zZW50fQogICAgICAgICAgICAgICAgICBvbkNoYW5nZT17KGV2ZW50KSA9PiB1cGRhdGVGaWVsZCgiY29uc2VudCIsIGV2ZW50LnRhcmdldC5jaGVja2VkKX0KICAgICAgICAgICAgICAgIC8+CiAgICAgICAgICAgICAgICA8c3Bhbj4KICAgICAgICAgICAgICAgICAgSSBjb25maXJtIHRoYXQgdGhlIGluZm9ybWF0aW9uIHByb3ZpZGVkIGlzIGFjY3VyYXRlIGFuZCB1bmRlcnN0YW5kIHRoYXQgc3VibWlzc2lvbiBkb2VzCiAgICAgICAgICAgICAgICAgIG5vdCBjcmVhdGUgYSBsYXd5ZXItY2xpZW50IHJlbGF0aW9uc2hpcCB1bnRpbCBhY2NlcHRlZCBieSBCcml4IExlZ2FsLgogICAgICAgICAgICAgICAgPC9zcGFuPgogICAgICAgICAgICAgIDwvbGFiZWw+CiAgICAgICAgICAgIDwvPgogICAgICAgICAgKX0KCiAgICAgICAgICB7ZXJyb3IgJiYgPHAgY2xhc3NOYW1lPSJjb25zdWx0LWVycm9yIiByb2xlPSJhbGVydCI+e2Vycm9yfTwvcD59CgogICAgICAgICAgPGRpdiBjbGFzc05hbWU9ImNvbnN1bHQtYWN0aW9ucyI+CiAgICAgICAgICAgIHtzdGVwID4gMSAmJiAoCiAgICAgICAgICAgICAgPGJ1dHRvbgogICAgICAgICAgICAgICAgY2xhc3NOYW1lPSJidXR0b24gYnV0dG9uLS1vdXRsaW5lIgogICAgICAgICAgICAgICAgdHlwZT0iYnV0dG9uIgogICAgICAgICAgICAgICAgb25DbGljaz17KCkgPT4gewogICAgICAgICAgICAgICAgICBzZXRTdGVwKChjdXJyZW50KSA9PiBNYXRoLm1heChjdXJyZW50IC0gMSwgMSkpOwogICAgICAgICAgICAgICAgICBzZXRFcnJvcigiIik7CiAgICAgICAgICAgICAgICB9fQogICAgICAgICAgICAgID4KICAgICAgICAgICAgICAgIEJhY2sKICAgICAgICAgICAgICA8L2J1dHRvbj4KICAgICAgICAgICAgKX0KICAgICAgICAgICAge3N0ZXAgPCA0ID8gKAogICAgICAgICAgICAgIDxidXR0b24gY2xhc3NOYW1lPSJidXR0b24gYnV0dG9uLS1wcmltYXJ5IiB0eXBlPSJidXR0b24iIG9uQ2xpY2s9e2hhbmRsZU5leHR9PgogICAgICAgICAgICAgICAgQ29udGludWUgPEFycm93UmlnaHQgc2l6ZT17MTZ9IC8+CiAgICAgICAgICAgICAgPC9idXR0b24+CiAgICAgICAgICAgICkgOiAoCiAgICAgICAgICAgICAgPGJ1dHRvbiBjbGFzc05hbWU9ImJ1dHRvbiBidXR0b24tLXByaW1hcnkiIHR5cGU9InN1Ym1pdCI+CiAgICAgICAgICAgICAgICBTdWJtaXQgcmVxdWVzdCA8QXJyb3dSaWdodCBzaXplPXsxNn0gLz4KICAgICAgICAgICAgICA8L2J1dHRvbj4KICAgICAgICAgICAgKX0KICAgICAgICAgIDwvZGl2PgogICAgICAgIDwvZm9ybT4KICAgICAgPC9zZWN0aW9uPgogICAgPC9tYWluPgogICk7Cn0K
+"use client";
+
+import { ArrowLeft, ArrowRight, CheckCircle2 } from "lucide-react";
+import Link from "next/link";
+import { FormEvent, useState } from "react";
+
+const practiceAreas = [
+  "Corporate Practice",
+  "Commercial Law",
+  "Regulatory & Statutory Compliance",
+  "Alternative Dispute Resolution",
+  "Taxation Law",
+  "Real Estate & Property Law",
+  "Employment Law",
+  "Intellectual Property",
+  "Business Structuring & Management",
+  "Legacy Building",
+  "Media & Entertainment Law",
+  "Litigation",
+  "Social Justice",
+  "General Legal Counsel",
+];
+
+const steps = ["Your information", "Legal matter", "Consultation", "Review"];
+
+type FormData = {
+  fullName: string;
+  email: string;
+  phone: string;
+  clientStatus: string;
+  office: string;
+  practiceArea: string;
+  urgency: string;
+  matter: string;
+  consultationType: string;
+  date: string;
+  time: string;
+  consent: boolean;
+};
+
+const initialData: FormData = {
+  fullName: "",
+  email: "",
+  phone: "",
+  clientStatus: "New client",
+  office: "",
+  practiceArea: "",
+  urgency: "Standard",
+  matter: "",
+  consultationType: "",
+  date: "",
+  time: "",
+  consent: false,
+};
+
+function BrixBrand() {
+  return (
+    <span className="brand">
+      <img src="/brix-legal-emblem.webp" alt="" aria-hidden="true" />
+      <span>
+        <strong>Brix Legal</strong>
+        <small>Practice &amp; Consultancy</small>
+      </span>
+    </span>
+  );
+}
+
+export default function ConsultationPage() {
+  const [step, setStep] = useState(1);
+  const [formData, setFormData] = useState<FormData>(initialData);
+  const [error, setError] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+  const [reference, setReference] = useState("");
+
+  const updateField = <Key extends keyof FormData>(key: Key, value: FormData[Key]) => {
+    setFormData((current) => ({ ...current, [key]: value }));
+    setError("");
+  };
+
+  const validateStep = () => {
+    if (step === 1 && (!formData.fullName || !formData.email || !formData.phone || !formData.office)) {
+      return "Please complete your contact information and preferred office.";
+    }
+
+    if (step === 2 && (!formData.practiceArea || !formData.matter)) {
+      return "Please select a practice area and briefly describe your matter.";
+    }
+
+    if (step === 3 && (!formData.consultationType || !formData.date || !formData.time)) {
+      return "Please choose a consultation type, preferred date and time.";
+    }
+
+    if (step === 4 && !formData.consent) {
+      return "Please confirm the declaration before submitting your request.";
+    }
+
+    return "";
+  };
+
+  const handleNext = () => {
+    const validationMessage = validateStep();
+    if (validationMessage) {
+      setError(validationMessage);
+      return;
+    }
+
+    setStep((current) => Math.min(current + 1, 4));
+  };
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const validationMessage = validateStep();
+
+    if (validationMessage) {
+      setError(validationMessage);
+      return;
+    }
+
+    setReference(`BRX-${new Date().getFullYear()}-${Math.floor(1000 + Math.random() * 9000)}`);
+    setSubmitted(true);
+  };
+
+  if (submitted) {
+    return (
+      <main className="consult-success">
+        <section className="consult-success__card">
+          <CheckCircle2 size={56} strokeWidth={1.5} />
+          <h1>Consultation request received.</h1>
+          <p>
+            Your reference is <strong>{reference}</strong>. The Brix Legal team will review your request
+            and contact you to confirm the appointment.
+          </p>
+          <Link className="button button--primary" href="/">
+            Return to Brix Legal
+          </Link>
+        </section>
+      </main>
+    );
+  }
+
+  return (
+    <main className="consult-page">
+      <section className="consult-shell">
+        <aside className="consult-sidebar">
+          <Link className="consult-back" href="/">
+            <ArrowLeft size={15} /> Back to website
+          </Link>
+          <BrixBrand />
+          <h1>Book a Consultation</h1>
+          <p>A guided intake that keeps your matter organised from first contact.</p>
+          <ol className="consult-progress">
+            {steps.map((label, index) => {
+              const number = index + 1;
+              const stateClass = number === step ? "is-active" : number < step ? "is-complete" : "";
+
+              return (
+                <li key={label} className={stateClass}>
+                  <span>{String(number).padStart(2, "0")}</span>
+                  {label}
+                </li>
+              );
+            })}
+          </ol>
+        </aside>
+
+        <form className="consult-panel" onSubmit={handleSubmit}>
+          <span className="consult-panel__eyebrow">Step {step} of 4</span>
+
+          {step === 1 && (
+            <>
+              <h2>Your information</h2>
+              <p>Tell us how to reach you and which office is most convenient.</p>
+              <div className="consult-grid">
+                <label className="consult-field consult-field--full">
+                  Full name
+                  <input
+                    type="text"
+                    value={formData.fullName}
+                    onChange={(event) => updateField("fullName", event.target.value)}
+                    placeholder="Your full name"
+                    autoComplete="name"
+                  />
+                </label>
+                <label className="consult-field">
+                  Email address
+                  <input
+                    type="email"
+                    value={formData.email}
+                    onChange={(event) => updateField("email", event.target.value)}
+                    placeholder="you@example.com"
+                    autoComplete="email"
+                  />
+                </label>
+                <label className="consult-field">
+                  Phone number
+                  <input
+                    type="tel"
+                    value={formData.phone}
+                    onChange={(event) => updateField("phone", event.target.value)}
+                    placeholder="+234"
+                    autoComplete="tel"
+                  />
+                </label>
+                <label className="consult-field">
+                  Client status
+                  <select
+                    value={formData.clientStatus}
+                    onChange={(event) => updateField("clientStatus", event.target.value)}
+                  >
+                    <option>New client</option>
+                    <option>Existing client</option>
+                  </select>
+                </label>
+                <label className="consult-field">
+                  Preferred office
+                  <select value={formData.office} onChange={(event) => updateField("office", event.target.value)}>
+                    <option value="">Select office</option>
+                    <option>Abuja</option>
+                    <option>Calabar</option>
+                    <option>Remote consultation</option>
+                  </select>
+                </label>
+              </div>
+            </>
+          )}
+
+          {step === 2 && (
+            <>
+              <h2>Tell us about your matter</h2>
+              <p>A short overview helps the right legal professional prepare for your consultation.</p>
+              <div className="consult-grid">
+                <label className="consult-field">
+                  Area of legal service
+                  <select
+                    value={formData.practiceArea}
+                    onChange={(event) => updateField("practiceArea", event.target.value)}
+                  >
+                    <option value="">Select practice area</option>
+                    {practiceAreas.map((area) => (
+                      <option key={area}>{area}</option>
+                    ))}
+                  </select>
+                </label>
+                <label className="consult-field">
+                  Urgency
+                  <select value={formData.urgency} onChange={(event) => updateField("urgency", event.target.value)}>
+                    <option>Standard</option>
+                    <option>Time-sensitive</option>
+                    <option>Urgent</option>
+                  </select>
+                </label>
+                <label className="consult-field consult-field--full">
+                  Brief description
+                  <textarea
+                    value={formData.matter}
+                    onChange={(event) => updateField("matter", event.target.value)}
+                    placeholder="Briefly describe your legal matter"
+                  />
+                </label>
+                <label className="consult-field consult-field--full">
+                  Supporting documents (optional)
+                  <input type="file" multiple />
+                </label>
+              </div>
+            </>
+          )}
+
+          {step === 3 && (
+            <>
+              <h2>Choose your consultation</h2>
+              <p>Select how and when you would prefer to speak with the Brix Legal team.</p>
+              <div className="consult-options">
+                {["In person", "Video call", "Phone call"].map((type) => (
+                  <label key={type} className="consult-option">
+                    <input
+                      type="radio"
+                      name="consultationType"
+                      checked={formData.consultationType === type}
+                      onChange={() => updateField("consultationType", type)}
+                    />
+                    <strong>{type}</strong>
+                    <small>{type === "In person" ? formData.office || "Brix Legal office" : "Remote consultation"}</small>
+                  </label>
+                ))}
+              </div>
+              <div className="consult-grid" style={{ marginTop: 22 }}>
+                <label className="consult-field">
+                  Preferred date
+                  <input
+                    type="date"
+                    value={formData.date}
+                    min={new Date().toISOString().split("T")[0]}
+                    onChange={(event) => updateField("date", event.target.value)}
+                  />
+                </label>
+                <label className="consult-field">
+                  Preferred time
+                  <select value={formData.time} onChange={(event) => updateField("time", event.target.value)}>
+                    <option value="">Select time</option>
+                    <option>10:00 AM</option>
+                    <option>11:30 AM</option>
+                    <option>1:00 PM</option>
+                    <option>3:30 PM</option>
+                  </select>
+                </label>
+              </div>
+            </>
+          )}
+
+          {step === 4 && (
+            <>
+              <h2>Review your request</h2>
+              <p>Please confirm the details below before submitting.</p>
+              <div className="consult-review">
+                <article>
+                  <strong>{formData.fullName}</strong>
+                  <span>{formData.email} · {formData.phone}</span>
+                </article>
+                <article>
+                  <strong>{formData.practiceArea}</strong>
+                  <span>{formData.urgency} · {formData.matter}</span>
+                </article>
+                <article>
+                  <strong>{formData.consultationType}</strong>
+                  <span>{formData.date} at {formData.time} · {formData.office}</span>
+                </article>
+              </div>
+              <label className="consult-consent">
+                <input
+                  type="checkbox"
+                  checked={formData.consent}
+                  onChange={(event) => updateField("consent", event.target.checked)}
+                />
+                <span>
+                  I confirm that the information provided is accurate and understand that submission does
+                  not create a lawyer-client relationship until accepted by Brix Legal.
+                </span>
+              </label>
+            </>
+          )}
+
+          {error && <p className="consult-error" role="alert">{error}</p>}
+
+          <div className="consult-actions">
+            {step > 1 && (
+              <button
+                className="button button--outline"
+                type="button"
+                onClick={() => {
+                  setStep((current) => Math.max(current - 1, 1));
+                  setError("");
+                }}
+              >
+                Back
+              </button>
+            )}
+            {step < 4 ? (
+              <button className="button button--primary" type="button" onClick={handleNext}>
+                Continue <ArrowRight size={16} />
+              </button>
+            ) : (
+              <button className="button button--primary" type="submit">
+                Submit request <ArrowRight size={16} />
+              </button>
+            )}
+          </div>
+        </form>
+      </section>
+    </main>
+  );
+}
