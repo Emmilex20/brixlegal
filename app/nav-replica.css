@@ -23,18 +23,20 @@ main > header.nav > .desktop-book:hover{background:#cf6a22;transform:translateY(
  .burger.open{visibility:hidden}
  .menu-scrim{display:block;position:fixed;inset:0;z-index:190;background:rgba(20,17,14,.72);opacity:0;pointer-events:none;transition:opacity .25s ease}
  .menu-scrim.open{opacity:1;pointer-events:auto}
- .mobile-menu{display:flex;position:fixed;z-index:200;top:0;right:0;width:min(323px,86vw);height:100dvh;background:#fff;padding:18px 32px 12px;flex-direction:column;transform:translateX(102%);transition:transform .3s cubic-bezier(.22,.61,.36,1);box-shadow:-20px 0 50px rgba(0,0,0,.08);font-family:Fraunces,Georgia,"Times New Roman",serif;overflow-y:auto}
+ .mobile-menu{display:flex;position:fixed;z-index:200;top:0;right:0;bottom:0;width:min(323px,86vw);height:100vh;height:100dvh;max-height:100dvh;background:#fff;padding:18px 32px max(22px,env(safe-area-inset-bottom));flex-direction:column;transform:translateX(102%);transition:transform .3s cubic-bezier(.22,.61,.36,1);box-shadow:-20px 0 50px rgba(0,0,0,.08);font-family:Fraunces,Georgia,"Times New Roman",serif;overflow-x:hidden;overflow-y:scroll;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain;touch-action:pan-y;scrollbar-width:thin}
+ .mobile-menu::-webkit-scrollbar{width:5px}
+ .mobile-menu::-webkit-scrollbar-thumb{background:#d8d0c6;border-radius:10px}
  .mobile-menu.open{transform:translateX(0)}
- .mobile-menu-head{height:62px;display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+ .mobile-menu-head{height:62px;min-height:62px;flex:0 0 62px;display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
  .mobile-brand{display:flex;align-items:center;text-decoration:none;color:#17130e;min-width:0}
  .mobile-brand i{display:block;flex:0 0 42px;width:42px;height:42px;background:url('/brix-legal-emblem.webp') center/contain no-repeat;margin-right:10px}
  .mobile-brand span{display:flex;flex-direction:column;min-width:0;padding-top:3px}
  .mobile-brand strong{font-size:19px;line-height:18px;font-weight:600;white-space:nowrap}
  .mobile-brand small{font-family:Inter,Arial,sans-serif;color:#cf6a22;font-size:8.2px;line-height:10px;font-weight:700;letter-spacing:1.75px;white-space:nowrap;margin-top:4px}
  .mobile-close{flex:0 0 44px;width:44px;height:44px;border:1px solid #e9e3da;border-radius:10px;background:#fff;color:#17130e;display:grid;place-items:center;padding:0;cursor:pointer}
- .mobile-menu nav{display:flex!important;flex-direction:column;margin:32px 0 0;gap:0}
- .mobile-menu nav a{display:flex;align-items:center;min-height:68px;border-bottom:1px solid #eee9e2;color:#17130e;text-decoration:none;font-size:22px;line-height:1.15;font-weight:400;padding:0}
+ .mobile-menu nav{display:flex!important;flex:0 0 auto;flex-direction:column;margin:32px 0 0;gap:0}
+ .mobile-menu nav a{display:flex;flex:0 0 auto;align-items:center;min-height:68px;border-bottom:1px solid #eee9e2;color:#17130e;text-decoration:none;font-size:22px;line-height:1.15;font-weight:400;padding:0}
  .mobile-menu nav a:first-child{border-top:0}
- .mobile-consult{margin-top:24px;min-height:61px;border-radius:999px;background:#eb7924;color:#17130e;text-decoration:none;display:flex;align-items:center;justify-content:center;font:600 21px Fraunces,Georgia,serif;box-shadow:0 10px 24px rgba(235,121,36,.18);white-space:nowrap}
+ .mobile-consult{flex:0 0 61px;margin-top:24px;min-height:61px;border-radius:999px;background:#eb7924;color:#17130e;text-decoration:none;display:flex;align-items:center;justify-content:center;font:600 21px Fraunces,Georgia,serif;box-shadow:0 10px 24px rgba(235,121,36,.18);white-space:nowrap}
 }
 @media (max-width:390px){main > header.nav{padding-left:20px;padding-right:20px}main > header.nav > .brand{width:235px;padding-left:52px;font-size:19px}main > header.nav > .brand:after{font-size:8.5px;letter-spacing:2px;margin-top:4px}.mobile-menu{width:323px;padding-left:32px;padding-right:32px}}
