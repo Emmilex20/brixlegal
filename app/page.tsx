@@ -1,6 +1,6 @@
 "use client";
 import { motion, useInView } from "framer-motion";
-import { ArrowRight, Mail, MapPin, Phone, MessageCircle } from "lucide-react";
+import { ArrowRight, Mail, MapPin, Phone, MessageCircle, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 const fade:any={initial:{opacity:0,y:24},whileInView:{opacity:1,y:0},viewport:{once:true,amount:.15},transition:{duration:.65,ease:"easeOut"}};
