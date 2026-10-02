@@ -1,28 +1,27 @@
 /* Brix Legal navigation fidelity layer — isolated against legacy globals */
 main > header.nav{
   position:sticky;top:0;left:0;right:0;z-index:100;
-  width:100%;height:80px;max-width:none;
-  margin:0;padding:0 6vw;
+  width:100%;height:80px;max-width:none;margin:0;padding:0 6vw;
   display:flex;align-items:center;justify-content:space-between;
-  background:rgba(255,255,255,.98);
-  border:0;border-bottom:1px solid transparent;box-shadow:none;
+  background:rgba(255,255,255,.98);border:0;border-bottom:1px solid transparent;box-shadow:none;
   font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 }
 main > header.nav > .brand{
-  position:relative;display:flex;align-items:center;
-  min-width:250px;height:44px;padding-left:56px;
-  color:#17130e;text-decoration:none;
-  font-family:Fraunces,Georgia,"Times New Roman",serif;
-  font-size:26px;font-weight:600;line-height:24px;letter-spacing:.1px;
+  position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;
+  min-width:250px;height:48px;padding:0 0 0 56px;
+  color:#17130e;text-decoration:none;font-family:Fraunces,Georgia,"Times New Roman",serif;
+  font-size:26px;font-weight:600;line-height:1;letter-spacing:.1px;
 }
 main > header.nav > .brand:before{
-  content:"";position:absolute;left:0;top:1px;width:44px;height:42px;
+  content:"";position:absolute;left:0;top:2px;width:44px;height:44px;
   background:url('/brix-legal-emblem.webp') center/contain no-repeat;
 }
+/* Keep the subtitle on its own baseline. This intentionally overrides the old
+   absolute pseudo-element that was crossing through the Brix Legal wordmark. */
 main > header.nav > .brand:after{
-  content:"PRACTICE & CONSULTANCY";position:absolute;left:56px;top:29px;
+  content:"PRACTICE & CONSULTANCY";position:static;display:block;margin-top:4px;
   color:#cf6a22;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  font-size:9.5px;font-weight:700;line-height:10px;letter-spacing:2.65px;white-space:nowrap;
+  font-size:9.5px;font-weight:700;line-height:1;letter-spacing:2.65px;white-space:nowrap;
 }
 main > header.nav > nav{display:flex;align-items:center;justify-content:center;gap:38px;margin:0 28px;}
 main > header.nav > nav a{position:relative;color:#211d19;text-decoration:none;font-size:15px;font-weight:400;white-space:nowrap;}
@@ -37,24 +36,17 @@ main > header.nav > .book{flex:0 0 auto;margin:0;padding:17px 28px;border-radius
 }
 
 @media (max-width:1050px){
-  /* Reference site: 375px viewport, 80px header, 20px horizontal inset. */
   main > header.nav{height:80px;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;}
   main > header.nav > nav{display:none!important;}
-
-  /* Keep the logo block within the same footprint as the live site so the
-     subtitle never collides with the menu button on narrow devices. */
   main > header.nav > .brand{
-    flex:0 0 239px;min-width:0;width:239px;height:44px;padding-left:52px;
-    font-size:19px;line-height:19px;letter-spacing:.19px;
-    overflow:visible;
+    flex:0 1 auto;min-width:0;width:242px;height:44px;padding:0 0 0 52px;
+    justify-content:center;font-size:19px;line-height:1;letter-spacing:.19px;overflow:visible;
   }
-  main > header.nav > .brand:before{width:42px;height:40px;top:2px;}
+  main > header.nav > .brand:before{width:42px;height:42px;top:1px;}
   main > header.nav > .brand:after{
-    left:52px;top:27px;font-size:9px;line-height:9px;letter-spacing:2.05px;
-    transform-origin:left top;white-space:nowrap;
+    position:static;display:block;margin-top:4px;font-size:8.7px;line-height:1;letter-spacing:2.15px;
+    transform:none;white-space:nowrap;
   }
-
-  /* The current component's CTA doubles as the visual mobile menu control. */
   main > header.nav > .book{
     position:relative;flex:0 0 44px;width:44px;height:44px;min-width:44px;padding:0;margin:0;
     border:1px solid #e9e3da;border-radius:10px;background:#fff;box-shadow:none;
@@ -66,6 +58,6 @@ main > header.nav > .book{flex:0 0 auto;margin:0;padding:17px 28px;border-radius
 
 @media (max-width:390px){
   main > header.nav{padding-left:20px;padding-right:20px;}
-  main > header.nav > .brand{flex-basis:239px;width:239px;padding-left:52px;font-size:19px;}
-  main > header.nav > .brand:after{left:52px;font-size:8.7px;letter-spacing:1.95px;}
+  main > header.nav > .brand{width:235px;padding-left:52px;font-size:19px;}
+  main > header.nav > .brand:after{font-size:8.5px;letter-spacing:2px;margin-top:4px;}
 }
