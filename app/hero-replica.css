@@ -1,0 +1,27 @@
+/* HERO — isolated fidelity layer matched to supplied live-site captures. */
+main>section.hero{position:relative;width:100%;min-height:auto;padding:150px max(22px,calc((100vw - 1240px)/2 + 63.3px)) 90px;display:grid;grid-template-columns:minmax(0,551.312px) minmax(0,498.802px);gap:63.3px;align-items:center;justify-content:center;background:#fff;overflow:hidden}
+main>section.hero>.hero-copy{width:551.312px;max-width:100%;margin:0}
+main>section.hero .eyebrow{position:relative;display:inline-flex;align-items:center;gap:10px;margin:0;color:#cf6a22;text-transform:uppercase;letter-spacing:2.64px;font:600 12px/20.4px Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+main>section.hero .eyebrow:before{content:"";display:block;width:26px;height:1px;background:#f89048;flex:0 0 26px}
+main>section.hero .eyebrow{font-size:0}
+main>section.hero .eyebrow:after{content:"§ BRIX LEGAL · EST. NIGERIA";font:600 12px/20.4px Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:2.64px;color:#cf6a22}
+main>section.hero h1{width:551.312px;max-width:100%;margin:22px 0 0;color:#17130e;font-family:Fraunces,Georgia,"Times New Roman",serif;font-optical-sizing:auto;font-size:74px;font-weight:600;line-height:75.48px;letter-spacing:-1.85px;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+main>section.hero h1 em{color:#cf6a22;font-family:Fraunces,Georgia,"Times New Roman",serif;font-style:italic;font-weight:500}
+main>section.hero p{width:500px;max-width:100%;margin:26px 0 0;color:#544e47;font:400 20px/34px Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+main>section.hero .hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:36px}
+main>section.hero .hero-actions .book,main>section.hero .hero-actions .ghost{min-height:50px;padding:15px 28px}
+main>section.hero .stats{display:flex;align-items:flex-start;gap:28px;margin-top:44px;padding-top:26px;border-top:1px solid #e9e3da}
+main>section.hero .stats div{display:flex;flex-direction:column;gap:2px}
+main>section.hero .stats strong{font:600 26px/1.1 Fraunces,Georgia,"Times New Roman",serif;color:#17130e}
+main>section.hero .stats span{font:400 12.5px/1.4 Inter,sans-serif;color:#8b8378;letter-spacing:.375px}
+main>section.hero>.hero-card{position:relative;width:498.802px;min-height:0;aspect-ratio:820/1011;align-self:center;margin:0;background:transparent;border-radius:14px;overflow:visible}
+main>section.hero>.hero-card:before{content:"";position:absolute;right:-40px;top:-37px;width:64%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 50% 40%,#fbeee1,transparent 68%);filter:blur(4px)}
+main>section.hero>.hero-card>.hero-portrait{position:relative;z-index:1;display:block;width:100%;height:100%;aspect-ratio:820/1011;object-fit:cover;object-position:center top;border-radius:14px}
+main>section.hero>.hero-card>div:last-child{z-index:3;left:18px;right:18px;bottom:18px;display:flex;flex-direction:row;align-items:center;gap:12px;padding:17px 19px;border-radius:10px;background:rgba(255,255,255,.96);box-shadow:0 18px 50px rgba(23,19,14,.12)}
+main>section.hero>.hero-card>div:last-child>img{width:40px;height:40px;object-fit:contain;flex:0 0 40px}
+main>section.hero>.hero-card>div:last-child>span{display:flex;flex-direction:column;gap:2px}
+main>section.hero>.hero-card strong{font:600 19px/1.15 Fraunces,Georgia,"Times New Roman",serif;color:#17130e}
+main>section.hero>.hero-card small{font:600 11.5px/1.35 Inter,sans-serif;color:#cf6a22;letter-spacing:.46px}
+@media(max-width:1050px){main>section.hero{grid-template-columns:1fr;padding:110px 6vw 80px}main>section.hero>.hero-copy{width:100%;max-width:620px}main>section.hero>.hero-card{width:min(620px,100%);margin-top:42px}}
+@media(max-width:640px){main>section.hero{display:block;padding:126px 20px 70px;overflow:hidden}main>section.hero>.hero-copy{width:100%;max-width:none;margin:0}main>section.hero .eyebrow{gap:9px}main>section.hero .eyebrow:before{width:27px;flex-basis:27px}main>section.hero .eyebrow:after{font-size:12px;line-height:20.4px;letter-spacing:2.64px;white-space:nowrap}main>section.hero h1{width:100%;max-width:none;margin-top:22px;font-size:40px;line-height:40.8px;letter-spacing:-1px;font-weight:600}main>section.hero h1 em{font-size:inherit;line-height:inherit;letter-spacing:inherit;font-weight:500}main>section.hero p{width:100%;max-width:none;margin-top:26px;font-size:16px;line-height:33px}main>section.hero .hero-actions{margin-top:36px;display:flex;flex-direction:row;align-items:center;gap:12px}main>section.hero .hero-actions .book,main>section.hero .hero-actions .ghost{padding:15px 28px}main>section.hero .stats{display:none}main>section.hero>.hero-card{width:100%;margin-top:42px;display:none}}
+@media(max-width:390px){main>section.hero{padding-left:20px;padding-right:20px}main>section.hero .eyebrow:after{letter-spacing:2.3px}}
