@@ -1,19 +1,40 @@
-# Brix Legal Rebuild
+# Brix Legal Practice & Consultancy
 
-Clean-room Next.js rebuild of the public Brix Legal website, using the live site as the visual/content reference and adding a native consultation intake flow.
+A high-fidelity Next.js rebuild of the Brix Legal public website, based on the firm's live visual identity and content. The project also includes a native, multi-step consultation intake flow instead of sending prospective clients to Calendly.
 
-## Run locally
+## Features
+
+- Responsive homepage matching the Brix Legal cream, charcoal and orange design system
+- Fixed desktop navigation and slide-out mobile navigation
+- Animated hero, client ticker, firm profile and key metrics
+- Practice areas, process, team, testimonials, insights and careers sections
+- Contact, newsletter, WhatsApp and social links
+- Four-step consultation intake flow at `/consultation`
+- Responsive layouts for desktop, tablet and mobile
+- Accessible form labels, navigation controls and reduced-motion support
+
+## Local development
 
 ```bash
 pnpm install
 pnpm dev
 ```
 
-## Current status
-- Public homepage structure recreated
-- Motion/reveal effects and client ticker included
-- Consultation intake flow added at /consultation
-- Existing public website copy/sections replicated from the live reference
+Open [http://localhost:3000](http://localhost:3000).
 
-## Asset note
-The original private source repository and original brand asset files were not available. Placeholder portrait blocks are intentionally used in this first commit; they should be replaced by the firm's original logo and photographs once supplied or reliably extracted from public assets.
+## Production build
+
+```bash
+pnpm build
+pnpm start
+```
+
+## Stack
+
+- Next.js 15
+- React 19
+- TypeScript
+- Framer Motion
+- Lucide React
+
+Brand imagery used by the site is stored in `public/`.
