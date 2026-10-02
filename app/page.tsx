@@ -1,29 +1,964 @@
-﻿"use client";
-import { motion, useInView } from "framer-motion";
-import { ArrowRight, Mail, MapPin, Phone, MessageCircle, X } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+"use client";
 
-const fade:any={initial:{opacity:0,y:24},whileInView:{opacity:1,y:0},viewport:{once:true,amount:.15},transition:{duration:.65,ease:"easeOut"}};
-const services=[["Corporate Practice","Incorporation, structuring and lifecycle advisory."],["Commercial Law","Contracts, transactions and commercial advisory."],["Regulatory & Statutory Compliance","Staying compliant with evolving regulation."],["Alternative Dispute Resolution","Arbitration, mediation and negotiated settlement."],["Taxation Law","Tax planning, advisory and compliance."],["Real Estate & Property Law","Acquisition, title, leases and property counsel."],["Employment Law","Workforce policy, contracts and disputes."],["Intellectual Property","Trademarks, copyright and IP protection."],["Business Structuring & Management","Governance frameworks and operational structure."],["Legacy Building","Succession, estates and enduring structures."],["Media & Entertainment Law","Rights, licensing and creative-industry counsel."],["Litigation","Robust representation before the courts."],["Social Justice","Advancing fairness and equitable outcomes."],["General Legal Counsel","Everyday advisory across your legal needs."]];
-const why=[["Seamless Practice","We make your legal process as smooth and hassle-free as possible, from first consultation to final resolution."],["Client-Centred","We pride ourselves on nurturing relationships, giving clients the best experience and ensuring partnership longevity."],["Legal Expertise","Informed guidance and opinions drawn from extensive experience across the corporate and commercial sector."],["Legacy Building","We structure your business, assets and agreements to stand the test of time and transition seamlessly."],["Detail-Oriented","A thorough, meticulous approach crafted with care — so that no detail ever goes unnoticed."],["Attorney-Client Privilege","All confidential communications conducted to provide legal advice are duly and rigorously protected."],["Corporate Governance","We help businesses establish sound governance — accountability, transparency and compliance at every level."],["Quick Legal Solutions","Prompt solutions when you need them — reach us by email, WhatsApp or a scheduled appointment."]];
-const steps=[["01","Consultation","We listen first. Book a free consultation to share your matter."],["02","Assessment","We review the facts, risks and options in meticulous detail."],["03","Strategy","We design a clear, compliant path tailored to your goals."],["04","Execution","We handle filings, negotiations and representation on your behalf."],["05","Resolution","We deliver seamless outcomes designed to stand the test of time."]];
-const testimonials=[["Air Sea Freighters Ltd","Logistics","Brix Legal excels in statutory compliance, and we highly recommend their services."],["Vitamins Farm Ltd","Agriculture","Brix Legal has consistently provided outstanding legal advisory, ensuring our legal protection at all times."],["Now Now Dispatch","Delivery","We have had a commendable experience with Brix Legal. We appreciate their expertise in the legal field."],["Feed a Hungry Child Foundation","Non-Profit","Brix Legal managed our incorporation quickly and efficiently — always available for consultation and seamless practice."],["Body Type","Wellness","We received outstanding legal advice from the Brix Legal team — it has been crucial to our growth as a business."],["OA Rattan Ng.","Manufacturing","Brix Legal has supported us from incorporation to compliance and counsel. We appreciate their attention to detail."],["Xsealz Ltd","Trade","The legal process with Brix Legal has been seamless and hassle-free from start to finish."],["Bélle by Brie","Fashion","Brix Legal has been essential to our growth — they are our one-stop compliance hub."]];
-const clients=testimonials.map(x=>x[0]);
-function Counter({to,suffix=""}:{to:number,suffix?:string}){const ref=useRef<HTMLSpanElement>(null);const seen=useInView(ref,{once:true,amount:.7});const [n,setN]=useState(0);useEffect(()=>{if(!seen)return;let start:number|undefined;const duration=1400;const tick=(t:number)=>{if(start===undefined)start=t;const p=Math.min((t-start)/duration,1);const eased=1-Math.pow(1-p,3);setN(Math.round(to*eased));if(p<1)requestAnimationFrame(tick)};requestAnimationFrame(tick)},[seen,to]);return <span ref={ref}>{n}{suffix}</span>}
-export default function Home(){const [menuOpen,setMenuOpen]=useState(false);useEffect(()=>{document.body.style.overflow=menuOpen?"hidden":"";return()=>{document.body.style.overflow=""}},[menuOpen]);const close=()=>setMenuOpen(false);return <main>
-<header className="nav"><a href="#top" className="brand" onClick={close}>Brix Legal</a><nav><a href="#why">Why Brix Legal</a><a href="#mission">Mission</a><a href="#services">Practice Areas</a><a href="#team">Our Team</a><a href="#insights">Insights</a><a href="#careers">Careers</a><a href="#contact">Contact</a></nav><a className="book desktop-book" href="/consultation">Book Consultation <ArrowRight size={17}/></a><button className={`burger${menuOpen?" open":""}`} aria-label={menuOpen?"Close menu":"Open menu"} aria-expanded={menuOpen} onClick={()=>setMenuOpen(v=>!v)}><span/><span/><span/></button></header>
-<div className={`menu-scrim${menuOpen?" open":""}`} onClick={close}/><aside className={`mobile-menu${menuOpen?" open":""}`} aria-label="Mobile navigation"><div className="mobile-menu-head"><a href="#top" className="mobile-brand" onClick={close}><i/> <span><strong>Brix Legal</strong><small>PRACTICE & CONSULTANCY</small></span></a><button className="mobile-close" onClick={close} aria-label="Close menu"><X size={25}/></button></div><nav><a href="#why" onClick={close}>Why Brix Legal</a><a href="#mission" onClick={close}>Mission &amp; Vision</a><a href="#services" onClick={close}>Practice Areas</a><a href="#team" onClick={close}>Our Team</a><a href="#insights" onClick={close}>Insights</a><a href="#careers" onClick={close}>Careers</a><a href="#contact" onClick={close}>Contact</a></nav><a className="mobile-consult" href="/consultation">Book Consultation</a></aside>
-<section id="top" className="hero"><div className="hero-copy"><motion.div {...fade} className="eyebrow">§ Brix Legal · Est. Nigeria</motion.div><motion.h1 {...fade}>For seamless <em>legal practice</em>, built to outlast today.</motion.h1><motion.p {...fade}>A multidisciplinary law firm delivering detail-driven corporate, commercial and compliance counsel to local and international clients — with the care of a partner and the precision of a specialist.</motion.p><motion.div {...fade} className="hero-actions"><a className="book large" href="/consultation">Book Consultation <ArrowRight size={18}/></a><a className="ghost" href="#services">Our Services</a></motion.div><motion.div {...fade} className="stats"><div><strong>14</strong><span>Areas of practice</span></div><div><strong>2</strong><span>Offices · Abuja & Calabar</span></div><div><strong>100%</strong><span>Client confidentiality</span></div></motion.div></div><motion.div {...fade} className="hero-card"><img className="hero-portrait" src="/reference-image-3.webp" alt="Briana A. Akpagu Esq., Principal Partner of Brix Legal"/><div><img src="/reference-image-1.png" alt=""/><span><strong>Briana A. Akpagu</strong><small>Principal Partner &middot; ACArb &middot; DCP</small></span></div></motion.div></section>
-<section className="ticker"><span>Trusted by esteemed clients</span><div className="ticker-track">{[...clients,...clients].map((x,i)=><em key={i}>{x}</em>)}</div></section>
-<section className="section light about-section"><div className="section-label">§ 01 About the firm</div><div className="about-grid"><motion.div {...fade} className="about-lead"><p>Brix Legal Practice and Consultancy is a multidisciplinary law firm — providing <span>informed consultation and excellent legal services</span> to both local and international clients.</p></motion.div><motion.div {...fade} className="prose"><p>We specialise in corporate practice, statutory compliance, commercial law, real estate, taxation, intellectual property and alternative dispute resolution — combining deep sector experience with a genuinely client-centred approach.</p><p>Our work goes beyond the matter in front of us. We structure your business, assets and agreements to stand the test of time, ensuring what you build outlasts you and transitions seamlessly to those you intend to benefit — legacy building, done right.</p><div className="signature">Briana A. Akpagu <span>Principal Partner, Brix Legal</span></div></motion.div></div><motion.div {...fade} className="about-metrics"><div><strong><Counter to={14}/></strong><span>Areas of practice</span></div><div><strong><Counter to={2}/></strong><span>Offices — Abuja & Calabar</span></div><div><strong><Counter to={200} suffix="+"/></strong><span>Esteemed clients served</span></div><div><strong><Counter to={100} suffix="%"/></strong><span>Confidential & privileged</span></div></motion.div></section>
-<section id="why" className="section dark"><div className="section-label">§ 02 Why Brix Legal</div><motion.h2 {...fade}>The advantages of a firm that treats your matter as its own.</motion.h2><motion.p {...fade} className="lead">We're here to make your legal process as smooth and hassle-free as possible — because we truly value our clients.</motion.p><div className="grid4">{why.map(([h,b],i)=><motion.article {...fade} key={i} className="feature"><span>0{i+1}</span><h3>{h}</h3><p>{b}</p></motion.article>)}</div></section>
-<section id="mission" className="section light"><div className="section-label">§ 03 What drives us</div><motion.h2 {...fade}>Mission & Vision</motion.h2><div className="mission-grid"><motion.article {...fade}><span>Our Mission</span><p>To provide seamless, detail-driven legal services that empower local and international clients to navigate statutory compliance, corporate, commercial and tax laws — while promoting alternative dispute resolution and advancing social justice.</p></motion.article><motion.article {...fade}><span>Our Vision</span><p>To be a trusted global legal partner known for excellence, innovation and integrity — championing client satisfaction and contributing meaningfully to a just and equitable society.</p></motion.article></div></section>
-<section id="services" className="section dark"><div className="section-label">§ 04 Expertise & Services</div><motion.h2 {...fade}>Fourteen areas of practice, one standard of care.</motion.h2><motion.p {...fade} className="lead">Multidisciplinary counsel across the matters that shape and protect Nigerian and international businesses.</motion.p><div className="services">{services.map(([h,b],i)=><motion.article {...fade} key={i}><span>{String(i+1).padStart(2,"0")}</span><h3>{h}</h3><p>{b}</p></motion.article>)}</div></section>
-<section className="section light"><div className="section-label">§ 05 How we work</div><motion.h2 {...fade}>A clear path from first call to lasting outcome.</motion.h2><div className="steps">{steps.map(([n,h,b],i)=><motion.article {...fade} key={i}><span>§ {n}</span><h3>{h}</h3><p>{b}</p></motion.article>)}</div></section>
-<section id="team" className="section partner"><div className="section-label">§ 06 Meet the Principal Partner</div><div className="partner-grid"><motion.div {...fade} className="portrait-large"><img src="/reference-image-5.webp" alt="Portrait of Briana A. Akpagu Esq., Principal Partner"/></motion.div><motion.div {...fade} className="partner-copy"><h2>Briana A. Akpagu Esq.</h2><div className="tags"><span>Principal Partner</span><span>ACArb</span><span>DCP</span><span>Corporate & Commercial Law</span></div><p>Briana leads Brix Legal with a commitment to excellence, integrity and seamless client service. An Associate of the Chartered Institute of Arbitrators (ACArb) and a Data Compliance Professional (DCP), her practice spans corporate governance, statutory compliance, taxation and legacy building.</p><p>She helps clients navigate complexity with clarity and confidence — turning legal process into a genuine advantage for the businesses and individuals she represents, at home and abroad.</p><div className="hero-actions"><a className="ghost lightbtn" href="#">Connect on LinkedIn</a><a className="book large" href="/consultation">Book a consultation</a></div></motion.div></div></section>
-<section className="section dark"><div className="section-label">§ Growing team</div><motion.h2 {...fade}>Room for exceptional people.</motion.h2><p className="lead">As Brix Legal grows, so does our bench. These seats are reserved for dedicated professionals who share our standard.</p><div className="grid4">{[["Associate Counsel","Corporate & Commercial"],["Compliance Lead","Regulatory & Statutory"],["Litigation Associate","Dispute Resolution"],["Legal Intern","Trainee Programme"]].map(([a,b],i)=><motion.article {...fade} className="feature" key={i}><span>Position open</span><h3>{a}</h3><p>{b}</p></motion.article>)}</div></section>
-<section className="section light"><div className="section-label">§ 07 Some of our esteemed clients</div><motion.h2 {...fade}>The measure of seamless practice.</motion.h2><div className="testimonials">{testimonials.map(([n,c,q],i)=><motion.article {...fade} key={i}><div className="quote">“</div><p>{q}</p><strong>{n}</strong><span>{c}</span></motion.article>)}</div></section>
-<section id="insights" className="section dark"><div className="section-label">§ 08 News, Publications & Insights</div><motion.h2 {...fade}>Practical legal thinking, freely shared.</motion.h2><div className="insights"><motion.article {...fade}><span>Featured · Downloadable Guide</span><h3>A Simple Guide to Starting a Non-Profit Organization in Nigeria</h3><p>By Briana A. Akpagu Esq., ACArb, DCP — a step-by-step primer on incorporating and running a compliant non-profit in Nigeria.</p><a href="#">Download on Selar</a></motion.article><motion.article {...fade}><span>LinkedIn</span><h3>Follow our latest legal updates</h3><p>Regulatory notes, compliance reminders and firm news.</p><a href="#">Visit our page</a></motion.article><motion.article {...fade}><span>Instagram</span><h3>@brixlegal.ng</h3><p>Bite-sized legal insight for founders and businesses.</p><a href="#">See our posts</a></motion.article></div></section>
-<section id="careers" className="section light careers"><div className="section-label">§ 09 Join the team</div><motion.h2 {...fade}>Build your legal career with Brix Legal.</motion.h2><motion.p {...fade}>We welcome applications from dedicated, hard-working individuals who want to grow with a firm that values detail, integrity and seamless service. To apply, send your resume to brixlegal@gmail.com.</motion.p><a className="book darkbtn" href="mailto:brixlegal@gmail.com">Send your resume</a></section>
-<section id="contact" className="section contact"><div><div className="section-label">§ 10 Get in touch</div><motion.h2 {...fade}>Let's make your legal process seamless.</motion.h2><p className="lead">Reach us by email, WhatsApp, or schedule an appointment — we'll respond promptly.</p><div className="contact-list"><p><MapPin size={18}/><strong>Abuja Office</strong><span>Mabushi, Abuja, Federal Capital Territory, Nigeria</span></p><p><MapPin size={18}/><strong>Calabar Office</strong><span>Brix Plaza, 2nd Floor, Parliamentary Extension, Calabar, Cross River State, Nigeria</span></p><p><Mail size={18}/><strong>Email</strong><span>brixlegal@gmail.com</span></p><p><Phone size={18}/><strong>WhatsApp</strong><span>+234 903 810 3995</span></p></div></div><motion.form {...fade} className="contact-form"><h3>Request a consultation</h3><p>Tell us briefly about your matter and we'll get back to you.</p><input placeholder="Full name"/><input placeholder="Email address"/><select><option>Area of interest</option>{services.map(([h])=><option key={h}>{h}</option>)}</select><textarea placeholder="How can we help?" rows={5}/><button type="button" onClick={()=>location.href="/consultation"}>Send enquiry <ArrowRight size={16}/></button></motion.form></section>
-<footer><div className="footer-brand"><div className="brand">Brix Legal</div><p>A multidisciplinary law firm delivering seamless, detail-driven legal services to local and international clients.</p><strong>For Seamless Legal Practice</strong></div><div><h4>Explore</h4><a href="#why">Why Brix Legal</a><a href="#mission">Mission & Vision</a><a href="#services">Practice Areas</a><a href="#team">Our Team</a><a href="#insights">Insights</a><a href="#careers">Careers</a></div><div><h4>Our Offices</h4><p>Abuja<br/>Mabushi, Abuja, FCT</p><p>Calabar<br/>Brix Plaza, Parliamentary Extension</p></div><div><h4>Contact</h4><a href="mailto:brixlegal@gmail.com">brixlegal@gmail.com</a><a href="https://wa.me/2349038103995">+234 903 810 3995</a><a href="/consultation">Book a consultation</a></div></footer><a className="whatsapp" href="https://wa.me/2349038103995" aria-label="WhatsApp"><MessageCircle size={29}/></a></main>}
+import { motion, useInView } from "framer-motion";
+import {
+  ArrowLeft,
+  ArrowRight,
+  Award,
+  Building2,
+  ChevronUp,
+  HeartHandshake,
+  Landmark,
+  Linkedin,
+  LockKeyhole,
+  Mail,
+  MapPin,
+  Menu,
+  MessageCircle,
+  Route,
+  SearchCheck,
+  X,
+  Zap,
+} from "lucide-react";
+import Link from "next/link";
+import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
+
+const reveal = {
+  initial: { opacity: 0, y: 28 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, amount: 0.18 },
+  transition: { duration: 0.72, ease: [0.22, 0.61, 0.36, 1] },
+} as const;
+
+const navItems = [
+  { href: "#about", label: "Why Brix Legal" },
+  { href: "#mission", label: "Mission" },
+  { href: "#practice", label: "Practice Areas" },
+  { href: "#team", label: "Our Team" },
+  { href: "#insights", label: "Insights" },
+  { href: "#careers", label: "Careers" },
+  { href: "#contact", label: "Contact" },
+];
+
+const reasons = [
+  {
+    title: "Seamless Practice",
+    description:
+      "We make your legal process as smooth and hassle-free as possible, from first consultation to final resolution.",
+    icon: Route,
+  },
+  {
+    title: "Client-Centred",
+    description:
+      "We pride ourselves on nurturing relationships, giving clients the best experience and ensuring partnership longevity.",
+    icon: HeartHandshake,
+  },
+  {
+    title: "Legal Expertise",
+    description:
+      "Informed guidance and opinions drawn from extensive experience across the corporate and commercial sector.",
+    icon: Award,
+  },
+  {
+    title: "Legacy Building",
+    description:
+      "We structure your business, assets and agreements to stand the test of time and transition seamlessly.",
+    icon: Landmark,
+  },
+  {
+    title: "Detail-Oriented",
+    description:
+      "A thorough, meticulous approach crafted with care — so that no detail ever goes unnoticed.",
+    icon: SearchCheck,
+  },
+  {
+    title: "Attorney-Client Privilege",
+    description:
+      "All confidential communications conducted to provide legal advice are duly and rigorously protected.",
+    icon: LockKeyhole,
+  },
+  {
+    title: "Corporate Governance",
+    description:
+      "We help businesses establish sound governance — accountability, transparency and compliance at every level.",
+    icon: Building2,
+  },
+  {
+    title: "Quick Legal Solutions",
+    description:
+      "Prompt solutions when you need them — reach us by email, WhatsApp or a scheduled appointment.",
+    icon: Zap,
+  },
+];
+
+const practiceAreas = [
+  ["Corporate Practice", "Incorporation, structuring and lifecycle advisory."],
+  ["Commercial Law", "Contracts, transactions and commercial advisory."],
+  ["Regulatory & Statutory Compliance", "Staying compliant with evolving regulation."],
+  ["Alternative Dispute Resolution", "Arbitration, mediation and negotiated settlement."],
+  ["Taxation Law", "Tax planning, advisory and compliance."],
+  ["Real Estate & Property Law", "Acquisition, title, leases and property counsel."],
+  ["Employment Law", "Workforce policy, contracts and disputes."],
+  ["Intellectual Property", "Trademarks, copyright and IP protection."],
+  ["Business Structuring & Management", "Governance frameworks and operational structure."],
+  ["Legacy Building", "Succession, estates and enduring structures."],
+  ["Media & Entertainment Law", "Rights, licensing and creative-industry counsel."],
+  ["Litigation", "Robust representation before the courts."],
+  ["Social Justice", "Advancing fairness and equitable outcomes."],
+  ["General Legal Counsel", "Everyday advisory across your legal needs."],
+] as const;
+
+const processSteps = [
+  ["01", "Consultation", "We listen first. Book a free consultation to share your matter."],
+  ["02", "Assessment", "We review the facts, risks and options in meticulous detail."],
+  ["03", "Strategy", "We design a clear, compliant path tailored to your goals."],
+  ["04", "Execution", "We handle filings, negotiations and representation on your behalf."],
+  ["05", "Resolution", "We deliver seamless outcomes designed to stand the test of time."],
+] as const;
+
+const openRoles = [
+  ["Associate Counsel", "Corporate & Commercial"],
+  ["Compliance Lead", "Regulatory & Statutory"],
+  ["Litigation Associate", "Dispute Resolution"],
+  ["Legal Intern", "Trainee Programme"],
+] as const;
+
+const testimonials = [
+  {
+    company: "Air Sea Freighters Ltd",
+    initials: "AS",
+    sector: "Logistics",
+    quote: "Brix Legal excels in statutory compliance, and we highly recommend their services.",
+  },
+  {
+    company: "Vitamins Farm Ltd",
+    initials: "VF",
+    sector: "Agriculture",
+    quote:
+      "Brix Legal has consistently provided outstanding legal advisory, ensuring our legal protection at all times.",
+  },
+  {
+    company: "Now Now Dispatch",
+    initials: "NN",
+    sector: "Delivery",
+    quote:
+      "We have had a commendable experience with Brix Legal. We appreciate their expertise in the legal field.",
+  },
+  {
+    company: "Feed a Hungry Child Foundation",
+    initials: "FH",
+    sector: "Non-Profit",
+    quote:
+      "Brix Legal managed our incorporation quickly and efficiently — always available for consultation and seamless practice.",
+  },
+  {
+    company: "Body Type",
+    initials: "BT",
+    sector: "Wellness",
+    quote:
+      "We received outstanding legal advice from the Brix Legal team — it has been crucial to our growth as a business.",
+  },
+  {
+    company: "OA Rattan Ng.",
+    initials: "OA",
+    sector: "Manufacturing",
+    quote:
+      "Brix Legal has supported us from incorporation to compliance and counsel. We appreciate their attention to detail.",
+  },
+  {
+    company: "Xsealz Ltd",
+    initials: "XZ",
+    sector: "Trade",
+    quote: "The legal process with Brix Legal has been seamless and hassle-free from start to finish.",
+  },
+  {
+    company: "Bélle by Brie",
+    initials: "BB",
+    sector: "Fashion",
+    quote: "Brix Legal has been essential to our growth — they are our one-stop compliance hub.",
+  },
+];
+
+const clientNames = testimonials.map(({ company }) => company);
+
+function Brand({ compact = false }: { compact?: boolean }) {
+  return (
+    <span className={compact ? "brand brand--compact" : "brand"}>
+      <img src="/brix-legal-emblem.webp" alt="" aria-hidden="true" />
+      <span>
+        <strong>Brix Legal</strong>
+        <small>Practice &amp; Consultancy</small>
+      </span>
+    </span>
+  );
+}
+
+function SectionLabel({ children }: { children: React.ReactNode }) {
+  return <p className="section-label">{children}</p>;
+}
+
+function Counter({ value, suffix = "" }: { value: number; suffix?: string }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true, amount: 0.75 });
+  const [displayValue, setDisplayValue] = useState(0);
+
+  useEffect(() => {
+    if (!inView) return;
+
+    let frame = 0;
+    let startTime: number | undefined;
+    const duration = 1400;
+
+    const animate = (time: number) => {
+      startTime ??= time;
+      const progress = Math.min((time - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setDisplayValue(Math.round(value * eased));
+
+      if (progress < 1) frame = requestAnimationFrame(animate);
+    };
+
+    frame = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(frame);
+  }, [inView, value]);
+
+  return (
+    <span ref={ref}>
+      {displayValue}
+      {suffix}
+    </span>
+  );
+}
+
+function Header() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 24);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
+  const closeMenu = () => setMenuOpen(false);
+
+  return (
+    <>
+      <header className={`site-header${scrolled ? " site-header--scrolled" : ""}`}>
+        <a href="#home" aria-label="Brix Legal home" onClick={closeMenu}>
+          <Brand />
+        </a>
+
+        <nav aria-label="Primary navigation">
+          {navItems.map((item) => (
+            <a key={item.href} href={item.href}>
+              {item.label}
+            </a>
+          ))}
+        </nav>
+
+        <Link className="button button--primary header-booking" href="/consultation">
+          Book Consultation
+        </Link>
+
+        <button
+          className="menu-toggle"
+          type="button"
+          aria-label="Open navigation"
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen(true)}
+        >
+          <Menu size={23} />
+        </button>
+      </header>
+
+      <button
+        className={`menu-backdrop${menuOpen ? " is-open" : ""}`}
+        type="button"
+        aria-label="Close navigation"
+        onClick={closeMenu}
+      />
+
+      <aside className={`mobile-menu${menuOpen ? " is-open" : ""}`} aria-label="Mobile navigation">
+        <div className="mobile-menu__head">
+          <a href="#home" aria-label="Brix Legal home" onClick={closeMenu}>
+            <Brand compact />
+          </a>
+          <button type="button" aria-label="Close navigation" onClick={closeMenu}>
+            <X size={23} />
+          </button>
+        </div>
+
+        <nav>
+          {navItems.map((item) => (
+            <a key={item.href} href={item.href} onClick={closeMenu}>
+              {item.label}
+            </a>
+          ))}
+        </nav>
+
+        <Link className="button button--primary" href="/consultation" onClick={closeMenu}>
+          Book Consultation
+        </Link>
+      </aside>
+    </>
+  );
+}
+
+function Hero() {
+  return (
+    <section id="home" className="hero">
+      <div className="hero__copy">
+        <motion.div {...reveal}>
+          <SectionLabel>Brix Legal · Est. Nigeria</SectionLabel>
+        </motion.div>
+        <motion.h1 {...reveal}>
+          For seamless <em>legal practice</em>, built to outlast today.
+        </motion.h1>
+        <motion.p {...reveal} className="hero__lead">
+          A multidisciplinary law firm delivering detail-driven corporate, commercial and compliance
+          counsel to local and international clients — with the care of a partner and the precision of
+          a specialist.
+        </motion.p>
+        <motion.div {...reveal} className="button-row">
+          <Link className="button button--primary" href="/consultation">
+            Book Consultation <ArrowRight size={17} />
+          </Link>
+          <a className="button button--outline" href="#practice">
+            Our Services
+          </a>
+        </motion.div>
+        <motion.div {...reveal} className="hero__stats">
+          <div>
+            <strong>14</strong>
+            <span>Areas of practice</span>
+          </div>
+          <div>
+            <strong>2</strong>
+            <span>Offices · Abuja &amp; Calabar</span>
+          </div>
+          <div>
+            <strong>100%</strong>
+            <span>Client confidentiality</span>
+          </div>
+        </motion.div>
+      </div>
+
+      <motion.div {...reveal} className="hero__portrait">
+        <img
+          className="hero__photo"
+          src="/reference-image-3.webp"
+          alt="Briana A. Akpagu Esq., Principal Partner of Brix Legal"
+        />
+        <img className="hero__watermark" src="/brix-legal-emblem.webp" alt="" aria-hidden="true" />
+        <div className="hero__identity">
+          <img src="/brix-legal-emblem.webp" alt="" aria-hidden="true" />
+          <span>
+            <strong>Briana A. Akpagu</strong>
+            <small>Principal Partner · ACArb · DCP</small>
+          </span>
+        </div>
+      </motion.div>
+    </section>
+  );
+}
+
+function ClientTicker() {
+  const repeatedNames = [...clientNames, ...clientNames];
+
+  return (
+    <section className="client-ticker" aria-label="Trusted clients">
+      <p>Trusted by esteemed clients</p>
+      <div className="client-ticker__window">
+        <div className="client-ticker__track">
+          {repeatedNames.map((name, index) => (
+            <span key={`${name}-${index}`}>{name}</span>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function AboutFirm() {
+  return (
+    <section id="about-firm" className="section about-firm">
+      <SectionLabel>01 About the firm</SectionLabel>
+      <div className="about-firm__grid">
+        <motion.p {...reveal} className="about-firm__lead">
+          Brix Legal Practice and Consultancy is a multidisciplinary law firm — providing{" "}
+          <em>informed consultation and excellent legal services</em> to both local and international
+          clients.
+        </motion.p>
+        <motion.div {...reveal} className="about-firm__copy">
+          <p>
+            We specialise in corporate practice, statutory compliance, commercial law, real estate,
+            taxation, intellectual property and alternative dispute resolution — combining deep sector
+            experience with a genuinely client-centred approach.
+          </p>
+          <p>
+            Our work goes beyond the matter in front of us. We structure your business, assets and
+            agreements to stand the test of time, ensuring what you build outlasts you and transitions
+            seamlessly to those you intend to benefit — legacy building, done right.
+          </p>
+          <div className="signature">
+            <strong>Briana A. Akpagu</strong>
+            <span>Principal Partner, Brix Legal</span>
+          </div>
+        </motion.div>
+      </div>
+
+      <motion.div {...reveal} className="about-firm__metrics">
+        <div>
+          <strong><Counter value={14} /></strong>
+          <span>Areas of practice</span>
+        </div>
+        <div>
+          <strong><Counter value={2} /></strong>
+          <span>Offices — Abuja &amp; Calabar</span>
+        </div>
+        <div>
+          <strong><Counter value={200} suffix="+" /></strong>
+          <span>Esteemed clients served</span>
+        </div>
+        <div>
+          <strong><Counter value={100} suffix="%" /></strong>
+          <span>Confidential &amp; privileged</span>
+        </div>
+      </motion.div>
+    </section>
+  );
+}
+
+function WhyBrix() {
+  return (
+    <section id="about" className="section section--tint why-brix">
+      <SectionLabel>02 Why Brix Legal</SectionLabel>
+      <motion.h2 {...reveal}>The advantages of a firm that treats your matter as its own.</motion.h2>
+      <motion.p {...reveal} className="section-intro">
+        We&apos;re here to make your legal process as smooth and hassle-free as possible — because we
+        truly value our clients.
+      </motion.p>
+      <div className="reason-grid">
+        {reasons.map(({ title, description, icon: Icon }) => (
+          <motion.article {...reveal} key={title}>
+            <span className="reason-grid__icon">
+              <Icon size={27} strokeWidth={1.7} />
+            </span>
+            <h3>{title}</h3>
+            <p>{description}</p>
+          </motion.article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function MissionVision() {
+  return (
+    <section id="mission" className="section mission">
+      <div className="section-heading section-heading--center">
+        <SectionLabel>03 What drives us</SectionLabel>
+        <motion.h2 {...reveal}>Mission &amp; Vision</motion.h2>
+      </div>
+      <div className="mission__grid">
+        <motion.article {...reveal}>
+          <span>◎ &nbsp; Our Mission</span>
+          <p>
+            To provide seamless, detail-driven legal services that empower local and international
+            clients to navigate statutory compliance, corporate, commercial and tax laws — while
+            promoting alternative dispute resolution and advancing social justice.
+          </p>
+        </motion.article>
+        <motion.article {...reveal} className="mission__vision">
+          <span>⚑ &nbsp; Our Vision</span>
+          <p>
+            To be a trusted global legal partner known for excellence, innovation and integrity —
+            championing client satisfaction and contributing meaningfully to a just and equitable
+            society.
+          </p>
+        </motion.article>
+      </div>
+    </section>
+  );
+}
+
+function PracticeAreas() {
+  return (
+    <section id="practice" className="section section--tint practice">
+      <SectionLabel>04 Expertise &amp; Services</SectionLabel>
+      <motion.h2 {...reveal}>Fourteen areas of practice, one standard of care.</motion.h2>
+      <motion.p {...reveal} className="section-intro">
+        Multidisciplinary counsel across the matters that shape and protect Nigerian and international
+        businesses.
+      </motion.p>
+      <div className="practice__grid">
+        {practiceAreas.map(([title, description], index) => (
+          <motion.article {...reveal} key={title}>
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <div>
+              <h3>{title}</h3>
+              <p>{description}</p>
+            </div>
+          </motion.article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function Process() {
+  return (
+    <section id="process" className="section process">
+      <div className="section-heading section-heading--center">
+        <SectionLabel>05 How we work</SectionLabel>
+        <motion.h2 {...reveal}>A clear path from first call to lasting outcome.</motion.h2>
+      </div>
+      <div className="process__steps">
+        {processSteps.map(([number, title, description]) => (
+          <motion.article {...reveal} key={number}>
+            <span>§ {number}</span>
+            <h3>{title}</h3>
+            <p>{description}</p>
+          </motion.article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function Team() {
+  return (
+    <section id="team" className="section section--tint team">
+      <div className="team__principal">
+        <motion.div {...reveal} className="team__portrait">
+          <img src="/reference-image-5.webp" alt="Portrait of Briana A. Akpagu Esq." />
+        </motion.div>
+        <motion.div {...reveal} className="team__copy">
+          <SectionLabel>06 Meet the Principal Partner</SectionLabel>
+          <h2>
+            Briana A. Akpagu <em>Esq.</em>
+          </h2>
+          <div className="tag-list">
+            <span>Principal Partner</span>
+            <span>ACArb</span>
+            <span>DCP</span>
+            <span>Corporate &amp; Commercial Law</span>
+          </div>
+          <p>
+            Briana leads Brix Legal with a commitment to excellence, integrity and seamless client
+            service. An Associate of the Chartered Institute of Arbitrators (ACArb) and a Data
+            Compliance Professional (DCP), her practice spans corporate governance, statutory
+            compliance, taxation and legacy building.
+          </p>
+          <p>
+            She helps clients navigate complexity with clarity and confidence — turning legal process
+            into a genuine advantage for the businesses and individuals she represents, at home and
+            abroad.
+          </p>
+          <div className="button-row">
+            <a
+              className="button button--outline"
+              href="https://www.linkedin.com/in/brianaakpagu"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Linkedin size={17} /> Connect on LinkedIn
+            </a>
+            <Link className="text-link" href="/consultation">
+              Book a consultation <ArrowRight size={17} />
+            </Link>
+          </div>
+        </motion.div>
+      </div>
+
+      <div className="growing-team">
+        <SectionLabel>Growing team</SectionLabel>
+        <motion.h2 {...reveal}>Room for exceptional people.</motion.h2>
+        <motion.p {...reveal} className="section-intro">
+          As Brix Legal grows, so does our bench. These seats are reserved for dedicated professionals
+          who share our standard.
+        </motion.p>
+        <div className="role-grid">
+          {openRoles.map(([role, department]) => (
+            <motion.article {...reveal} key={role}>
+              <h3>{role}</h3>
+              <p>{department}</p>
+              <span>Position open</span>
+            </motion.article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Testimonials() {
+  const groupCount = Math.ceil(testimonials.length / 3);
+  const [group, setGroup] = useState(0);
+  const visibleTestimonials = useMemo(
+    () =>
+      Array.from({ length: 3 }, (_, offset) => {
+        const index = (group * 3 + offset) % testimonials.length;
+        return testimonials[index];
+      }),
+    [group],
+  );
+
+  const move = (direction: number) => {
+    setGroup((current) => (current + direction + groupCount) % groupCount);
+  };
+
+  return (
+    <section id="clients" className="section testimonials">
+      <SectionLabel>07 Some of our esteemed clients</SectionLabel>
+      <motion.h2 {...reveal}>The measure of seamless practice.</motion.h2>
+      <div className="testimonials__grid">
+        {visibleTestimonials.map((testimonial) => (
+          <motion.article {...reveal} key={`${group}-${testimonial.company}`} className="testimonial-card">
+            <span className="testimonial-card__quote">“</span>
+            <p>{testimonial.quote}</p>
+            <div className="testimonial-card__client">
+              <span>{testimonial.initials}</span>
+              <div>
+                <strong>{testimonial.company}</strong>
+                <small>{testimonial.sector}</small>
+              </div>
+            </div>
+          </motion.article>
+        ))}
+      </div>
+      <div className="testimonials__controls">
+        <div className="testimonials__dots" aria-label="Testimonial pages">
+          {Array.from({ length: groupCount }, (_, index) => (
+            <button
+              key={index}
+              type="button"
+              className={group === index ? "is-active" : ""}
+              aria-label={`Go to testimonial page ${index + 1}`}
+              onClick={() => setGroup(index)}
+            />
+          ))}
+        </div>
+        <div>
+          <button type="button" aria-label="Previous testimonials" onClick={() => move(-1)}>
+            <ArrowLeft size={19} />
+          </button>
+          <button type="button" aria-label="Next testimonials" onClick={() => move(1)}>
+            <ArrowRight size={19} />
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Insights() {
+  return (
+    <section id="insights" className="section section--tint insights">
+      <SectionLabel>08 News, Publications &amp; Insights</SectionLabel>
+      <motion.h2 {...reveal}>Practical legal thinking, freely shared.</motion.h2>
+      <div className="insights__grid">
+        <motion.article {...reveal} className="insight-card insight-card--featured">
+          <span>Featured · Downloadable Guide</span>
+          <h3>A Simple Guide to Starting a Non-Profit Organization in Nigeria</h3>
+          <p>
+            By Briana A. Akpagu Esq., ACArb, DCP — a step-by-step primer on incorporating and running a
+            compliant non-profit in Nigeria.
+          </p>
+          <a href="https://selar.com/101514" target="_blank" rel="noreferrer">
+            Download on Selar <ArrowRight size={16} />
+          </a>
+        </motion.article>
+        <motion.article {...reveal} className="insight-card">
+          <span>LinkedIn</span>
+          <h3>Follow our latest legal updates</h3>
+          <p>Regulatory notes, compliance reminders and firm news.</p>
+          <a
+            href="https://www.linkedin.com/company/brix-legal-practice-consultancy/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Visit our page <ArrowRight size={16} />
+          </a>
+        </motion.article>
+        <motion.article {...reveal} className="insight-card">
+          <span>Instagram</span>
+          <h3>@brixlegal.ng</h3>
+          <p>Bite-sized legal insight for founders and businesses.</p>
+          <a href="https://www.instagram.com/brixlegal.ng" target="_blank" rel="noreferrer">
+            See our posts <ArrowRight size={16} />
+          </a>
+        </motion.article>
+      </div>
+    </section>
+  );
+}
+
+function Careers() {
+  return (
+    <section id="careers" className="section careers">
+      <SectionLabel>09 Join the team</SectionLabel>
+      <motion.h2 {...reveal}>Build your legal career with Brix Legal.</motion.h2>
+      <motion.p {...reveal}>
+        We welcome applications from dedicated, hard-working individuals who want to grow with a firm
+        that values detail, integrity and seamless service. To apply, send your resume to{" "}
+        <strong>brixlegal@gmail.com</strong>.
+      </motion.p>
+      <motion.div {...reveal} className="button-row">
+        <a
+          className="button button--primary"
+          href="mailto:brixlegal@gmail.com?subject=Application%20—%20Brix%20Legal%20Careers"
+        >
+          Send your resume
+        </a>
+        <a className="button button--dark-outline" href="#practice">
+          See our practice
+        </a>
+      </motion.div>
+    </section>
+  );
+}
+
+function Contact() {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    window.location.href = "/consultation";
+  };
+
+  return (
+    <section id="contact" className="section section--tint contact">
+      <SectionLabel>10 Get in touch</SectionLabel>
+      <motion.h2 {...reveal}>Let&apos;s make your legal process seamless.</motion.h2>
+      <motion.p {...reveal} className="section-intro">
+        Reach us by email, WhatsApp, or schedule an appointment — we&apos;ll respond promptly.
+      </motion.p>
+
+      <div className="contact__grid">
+        <motion.div {...reveal} className="contact__details">
+          <div className="contact__offices">
+            <article>
+              <MapPin size={19} />
+              <div>
+                <strong>Abuja Office</strong>
+                <p>Mabushi, Abuja, Federal Capital Territory, Nigeria</p>
+              </div>
+            </article>
+            <article>
+              <MapPin size={19} />
+              <div>
+                <strong>Calabar Office</strong>
+                <p>Brix Plaza, 2nd Floor, Parliamentary Extension, Calabar, Cross River State, Nigeria</p>
+              </div>
+            </article>
+          </div>
+
+          <dl>
+            <div>
+              <dt>Email</dt>
+              <dd><a href="mailto:brixlegal@gmail.com">brixlegal@gmail.com</a></dd>
+            </div>
+            <div>
+              <dt>WhatsApp</dt>
+              <dd>
+                <a href="https://wa.me/2349038103995" target="_blank" rel="noreferrer">
+                  +234 903 810 3995
+                </a>
+              </dd>
+            </div>
+            <div>
+              <dt>Book a consultation</dt>
+              <dd><Link href="/consultation">Start your request</Link></dd>
+            </div>
+          </dl>
+
+          <div className="contact__socials">
+            <a
+              href="https://www.linkedin.com/company/brix-legal-practice-consultancy/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="LinkedIn"
+            >
+              <Linkedin size={18} />
+            </a>
+            <a
+              href="https://www.instagram.com/brixlegal.ng"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram"
+            >
+              Instagram
+            </a>
+            <a
+              href="https://wa.me/2349038103995"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="WhatsApp"
+            >
+              <MessageCircle size={18} />
+            </a>
+            <a href="mailto:brixlegal@gmail.com" aria-label="Email">
+              <Mail size={18} />
+            </a>
+          </div>
+        </motion.div>
+
+        <motion.form {...reveal} className="contact-form" onSubmit={handleSubmit}>
+          <h3>Request a consultation</h3>
+          <p>
+            Tell us briefly about your matter and we&apos;ll guide you through the full consultation
+            request.
+          </p>
+          <label>
+            Full name
+            <input name="name" type="text" placeholder="Your name" required />
+          </label>
+          <label>
+            Email address
+            <input name="email" type="email" placeholder="you@example.com" required />
+          </label>
+          <label>
+            Area of interest
+            <select name="practiceArea" defaultValue="" required>
+              <option value="" disabled>Select a practice area</option>
+              {practiceAreas.map(([title]) => (
+                <option key={title} value={title}>{title}</option>
+              ))}
+            </select>
+          </label>
+          <label>
+            How can we help?
+            <textarea name="message" rows={5} placeholder="Briefly describe your matter" required />
+          </label>
+          <button className="button button--primary" type="submit">
+            Continue request <ArrowRight size={17} />
+          </button>
+        </motion.form>
+      </div>
+
+      <div className="newsletter">
+        <div>
+          <h3>Sign up for email updates</h3>
+          <p>Occasional legal insight and firm news — no spam.</p>
+        </div>
+        <form action="https://brix-legal-practice-and-consultancy.kit.com/ccbf343215" target="_blank">
+          <input name="first_name" type="text" placeholder="Name" aria-label="Name" />
+          <input name="email_address" type="email" placeholder="Email" aria-label="Email" required />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </section>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="footer">
+      <div className="footer__grid">
+        <div className="footer__brand">
+          <img src="/reference-image-7.png" alt="Brix Legal Practice and Consultancy" />
+          <p>
+            A multidisciplinary law firm delivering seamless, detail-driven legal services to local
+            and international clients.
+          </p>
+          <em>For Seamless Legal Practice</em>
+        </div>
+        <div>
+          <h3>Explore</h3>
+          {navItems.slice(0, 6).map((item) => (
+            <a key={item.href} href={item.href}>
+              {item.label === "Mission" ? "Mission & Vision" : item.label}
+            </a>
+          ))}
+        </div>
+        <div>
+          <h3>Our Offices</h3>
+          <p><strong>Abuja</strong><br />Mabushi, Abuja, FCT, Nigeria</p>
+          <p><strong>Calabar</strong><br />Brix Plaza, 2nd Floor, Parliamentary Extension, Cross River State</p>
+        </div>
+        <div>
+          <h3>Contact</h3>
+          <a href="mailto:brixlegal@gmail.com">brixlegal@gmail.com</a>
+          <a href="https://wa.me/2349038103995" target="_blank" rel="noreferrer">+234 903 810 3995</a>
+          <Link href="/consultation">Book a consultation</Link>
+          <p className="footer__updates">Sign up for email updates</p>
+          <form action="https://brix-legal-practice-and-consultancy.kit.com/ccbf343215" target="_blank">
+            <input type="email" name="email_address" placeholder="Your email" aria-label="Email" required />
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div className="footer__bottom">
+        <p>© {new Date().getFullYear()} Brix Legal Practice &amp; Consultancy. All rights reserved.</p>
+        <div>
+          <a href="https://www.linkedin.com/company/brix-legal-practice-consultancy/" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="https://www.instagram.com/brixlegal.ng" target="_blank" rel="noreferrer">Instagram</a>
+          <a href="#home">Back to top</a>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+function FloatingActions() {
+  const [showTop, setShowTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setShowTop(window.scrollY > 700);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <>
+      <a
+        className="floating-whatsapp"
+        href="https://wa.me/2349038103995"
+        target="_blank"
+        rel="noreferrer"
+        aria-label="Chat with Brix Legal on WhatsApp"
+      >
+        <MessageCircle size={29} fill="currentColor" />
+      </a>
+      <button
+        className={`back-to-top${showTop ? " is-visible" : ""}`}
+        type="button"
+        aria-label="Back to top"
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      >
+        <ChevronUp size={21} />
+      </button>
+    </>
+  );
+}
+
+export default function HomePage() {
+  return (
+    <main>
+      <Header />
+      <Hero />
+      <ClientTicker />
+      <AboutFirm />
+      <WhyBrix />
+      <MissionVision />
+      <PracticeAreas />
+      <Process />
+      <Team />
+      <Testimonials />
+      <Insights />
+      <Careers />
+      <Contact />
+      <Footer />
+      <FloatingActions />
+    </main>
+  );
+}

@@ -1,12 +1,20 @@
 import "./globals.css";
-import "./why-replica.css";
-import "./fidelity.css";
-import "./nav-replica.css";
-import "./hero-replica.css";
-export const metadata = {
+
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
   title: "Brix Legal Practice & Consultancy — For Seamless Legal Practice",
-  description: "A multidisciplinary law firm delivering detail-driven corporate, commercial and compliance counsel."
+  description:
+    "A multidisciplinary law firm delivering detail-driven corporate, commercial and compliance counsel to local and international clients.",
+  icons: {
+    icon: "/brix-legal-emblem.webp",
+  },
 };
-export default function RootLayout({children}:{children:React.ReactNode}) {
-  return <html lang="en"><body>{children}</body></html>;
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  );
 }
