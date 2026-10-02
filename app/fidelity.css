@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600;700&display=swap');
 
 /* Live-site fidelity pass: Why Brix Legal */
 #why.section.dark{
@@ -20,11 +20,14 @@
   max-width:860px;
   margin:0 0 24px;
   color:#17130f;
-  font-family:'DM Serif Display',Georgia,'Times New Roman',serif;
+  font-family:'Fraunces',Georgia,'Times New Roman',serif;
+  font-optical-sizing:auto;
   font-size:clamp(50px,4.15vw,64px);
-  font-weight:400;
-  line-height:1.14;
-  letter-spacing:-.018em;
+  font-weight:600;
+  line-height:1.08;
+  letter-spacing:-.02em;
+  text-rendering:optimizeLegibility;
+  -webkit-font-smoothing:antialiased;
 }
 #why .lead{
   max-width:790px;
@@ -83,11 +86,14 @@
 #why .feature h3{
   margin:0 0 12px;
   color:#17130f;
-  font-family:'DM Serif Display',Georgia,'Times New Roman',serif;
+  font-family:'Fraunces',Georgia,'Times New Roman',serif;
+  font-optical-sizing:auto;
   font-size:24px;
   line-height:1.2;
-  font-weight:400;
-  letter-spacing:0;
+  font-weight:600;
+  letter-spacing:-.02em;
+  text-rendering:optimizeLegibility;
+  -webkit-font-smoothing:antialiased;
 }
 #why .feature p{
   margin:0;
@@ -98,4 +104,11 @@
   font-weight:400;
 }
 @media(max-width:1050px){#why .grid4{grid-template-columns:repeat(2,1fr)}#why .feature:nth-child(4n){border-right:1px solid #e8e0d5}#why .feature:nth-child(2n){border-right:0}#why .feature:nth-last-child(-n+4){border-bottom:1px solid #e8e0d5}#why .feature:nth-last-child(-n+2){border-bottom:0}}
-@media(max-width:640px){#why.section.dark{padding:70px 22px}#why.section h2{font-size:44px}#why .lead{font-size:17px}#why .grid4{grid-template-columns:1fr;margin-top:45px}#why .feature{border-right:0!important;border-bottom:1px solid #e8e0d5!important;padding:34px 30px;min-height:auto}#why .feature:last-child{border-bottom:0!important}}
+@media(max-width:640px){
+  #why.section.dark{padding:70px 22px}
+  #why.section h2{font-family:'Fraunces',Georgia,'Times New Roman',serif;font-size:30px;font-weight:600;line-height:32.4px;letter-spacing:-.6px;margin-top:18px;margin-bottom:0}
+  #why .lead{font-size:17px;margin-top:20px}
+  #why .grid4{grid-template-columns:1fr;margin-top:45px}
+  #why .feature{border-right:0!important;border-bottom:1px solid #e8e0d5!important;padding:34px 30px;min-height:auto}
+  #why .feature:last-child{border-bottom:0!important}
+}
