@@ -15,7 +15,8 @@ export async function GET(request: Request) {
   const { data, error } = await supabase.rpc("get_available_slots", {
     p_date: date,
     p_office: office,
-    p_consultation_type: type,
+    p_type: type,
+    p_exclude_consultation: null,
   });
 
   if (error) {
