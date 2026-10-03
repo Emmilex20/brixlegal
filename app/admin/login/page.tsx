@@ -4,6 +4,7 @@ import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "../../../lib/supabase/client";
 import { ArrowRight, LockKeyhole } from "lucide-react";
+import "../admin.css";
 
 export default function AdminLoginPage() {
   const router = useRouter();
