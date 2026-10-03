@@ -1707,33 +1707,123 @@ main {
 }
 
 .careers {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: var(--ink);
-  color: var(--white);
+  position: relative;
+  padding-block: clamp(72px, 10vw, 132px);
+  background: #fff;
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.careers__inner {
+  width: 100%;
+  max-width: 1240px;
+  margin-inline: auto;
+  padding-inline: clamp(20px, 5vw, 72px);
+}
+
+.careers__panel {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(44px, 6vw, 84px);
+  border-radius: 20px;
+  background: linear-gradient(135deg, #17130e, #2b2119);
+  color: #fff;
   text-align: center;
 }
 
+.careers__panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 0%, rgba(248, 144, 72, 0.22), transparent 55%);
+  pointer-events: none;
+}
+
 .careers .section-label {
-  color: var(--orange);
-}
-
-.careers h2 {
-  max-width: 650px;
-  color: var(--white);
-}
-
-.careers > p {
-  max-width: 700px;
-  margin: 26px 0 0;
-  color: #b8afa5;
-  font-size: 15px;
-  line-height: 1.8;
-}
-
-.careers .button-row {
   justify-content: center;
+  color: #f89048;
+}
+
+.careers .section-label::before {
+  width: 26px;
+  flex-basis: 26px;
+  background: #f89048;
+}
+
+.careers__panel h2 {
+  max-width: 16ch;
+  margin: 18px auto 0;
+  color: #fff;
+  font-size: clamp(28px, 4.2vw, 50px);
+  line-height: 1.08;
+}
+
+.careers__panel > p {
+  max-width: 52ch;
+  margin: 20px auto 0;
+  color: #a89e90;
+  font-size: 16.5px;
+  line-height: 1.7;
+}
+
+.careers__panel > p strong {
+  color: #fff;
+}
+
+.careers__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 38px;
+}
+
+.careers__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55em;
+  padding: 15px 28px;
+  border: 1px solid transparent;
+  border-radius: 100px;
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.7;
+  white-space: nowrap;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease, box-shadow 0.4s ease, color 0.3s ease, border-color 0.3s ease;
+  will-change: transform;
+}
+
+.careers__button svg {
+  width: 17px;
+  height: 17px;
+}
+
+.careers__button--primary {
+  background: #e97c33;
+  color: #fff;
+  box-shadow: 0 10px 24px -10px rgba(233, 124, 51, 0.7);
+}
+
+.careers__button--primary:hover {
+  transform: translateY(-2px);
+  background: #cf6a22;
+  box-shadow: 0 16px 30px -12px rgba(233, 124, 51, 0.75);
+}
+
+.careers__button--ghost {
+  border-color: rgba(255, 255, 255, 0.28);
+  background: transparent;
+  color: #fff;
+}
+
+.careers__button--ghost:hover {
+  transform: translateY(-2px);
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .contact {
@@ -2776,24 +2866,6 @@ main {
 
   .why-brix__heading {
     margin-bottom: 42px;
-  }
-
-  .careers {
-    align-items: flex-start;
-    text-align: left;
-  }
-
-  .careers .section-label {
-    justify-content: flex-start;
-  }
-
-  .careers .button-row {
-    width: 100%;
-    justify-content: flex-start;
-  }
-
-  .careers .button {
-    width: 100%;
   }
 
   .contact dl > div {
