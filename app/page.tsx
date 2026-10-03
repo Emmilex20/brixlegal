@@ -104,7 +104,13 @@ function Careers() {
   return (
     <section id="careers" className="careers">
       <div className="careers__inner">
-        <motion.div {...reveal} className="careers__panel">
+        <motion.div
+          className="careers__panel"
+          initial={{ opacity: 0, y: 26 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.18 }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+        >
           <SectionLabel>09 Join the team</SectionLabel>
           <h2>Build your legal career with Brix Legal.</h2>
           <p>
