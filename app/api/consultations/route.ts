@@ -11,11 +11,22 @@ export async function POST(request: Request) {
     }
 
     const supabase = await createClient();
-    const reference = `BRX-${new Date().getFullYear()}-${crypto.randomUUID().replace(/-/g, "").slice(0, 8).toUpperCase()}`;
+    const { data: slotAvailable, error: slotError } = await supabase.rpc("is_consultation_slot_available", {
+      p_date: body.date,
+      p_time: body.time,
+      p_office: body.office,
+      p_consultation_type: body.consultationType,
+    });
 
-    // Public users have INSERT permission but intentionally do not have SELECT
-    // permission on consultations. Do not chain .select() here: PostgREST would
-    // then require a SELECT policy and turn an otherwise valid insert into an error.
+    if (slotError) {
+      console.error("Slot validation failed:", slotError);
+      return NextResponse.json({ error: "We could not verify this appointment time. Please try again." }, { status: 500 });
+    }
+    if (!slotAvailable) {
+      return NextResponse.json({ error: "That appointment time is no longer available. Please choose another time." }, { status: 409 });
+    }
+
+    const reference = `BRX-${new Date().getFullYear()}-${crypto.randomUUID().replace(/-/g, "").slice(0, 8).toUpperCase()}`;
     const { error } = await supabase.from("consultations").insert({
       reference,
       full_name: body.fullName.trim(),
@@ -35,10 +46,7 @@ export async function POST(request: Request) {
 
     if (error) {
       console.error("Consultation insert failed:", error);
-      return NextResponse.json(
-        { error: "We could not submit your request. Please try again." },
-        { status: 500 },
-      );
+      return NextResponse.json({ error: "We could not submit your request. Please try again." }, { status: 500 });
     }
 
     return NextResponse.json({ reference, status: "pending" }, { status: 201 });
