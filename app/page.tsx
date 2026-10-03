@@ -3,7 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { ArrowLeft, ArrowRight, ArrowUp, Award, BookOpenCheck, Briefcase, Building2, Clapperboard, Gavel, Handshake, HeartHandshake, KeyRound, Landmark, Lightbulb, Linkedin, LockKeyhole, Mail, MapPin, Menu, MessageCircle, Milestone, Network, ReceiptText, Route, Scale, Scale3d, SearchCheck, ShieldCheck, Target, Telescope, UserPlus, X, Zap } from "lucide-react";
 import Link from "next/link";
-import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 
 const reveal = { initial:{opacity:0,y:28}, whileInView:{opacity:1,y:0}, viewport:{once:true,amount:0.18}, transition:{duration:0.72,ease:[0.22,0.61,0.36,1]} } as const;
 const navItems=[{href:"#about",label:"Why Brix Legal"},{href:"#mission",label:"Mission"},{href:"#practice",label:"Practice Areas"},{href:"#team",label:"Our Team"},{href:"#insights",label:"Insights"},{href:"#careers",label:"Careers"},{href:"#contact",label:"Contact"}];
@@ -48,7 +48,57 @@ function MissionVision(){return <section id="mission" className="section mission
 function PracticeAreas(){return <section id="practice" className="section section--tint practice"><div className="practice__inner"><motion.div className="practice__heading" initial={{opacity:0,y:26}} whileInView={{opacity:1,y:0}} viewport={{once:true,amount:.18}} transition={{duration:.9,ease:[.16,1,.3,1]}}><SectionLabel key="label">04 Expertise &amp; Services</SectionLabel><h2 key="heading">Fourteen areas of practice, one standard of care.</h2><p key="intro" className="section-intro">Multidisciplinary counsel across the matters that shape and protect Nigerian and international businesses.</p></motion.div><div className="practice__grid">{practiceAreas.map(({title,description,icon:Icon},index)=><motion.article key={title} initial={{opacity:0,y:22}} whileInView={{opacity:1,y:0}} viewport={{once:true,amount:.18}} transition={{duration:.8,ease:[.16,1,.3,1],delay:index<8?.04+(index*.06):0}}><span key={`${title}-icon`} className="practice__icon"><Icon size={21} strokeWidth={1.9}/></span><div key={`${title}-content`}><h3>{title}</h3><p>{description}</p></div></motion.article>)}</div></div></section>}
 function Process(){return <section id="process" className="section process"><div className="process__inner"><motion.div className="process__heading" initial={{opacity:0,y:26}} whileInView={{opacity:1,y:0}} viewport={{once:true,amount:.18}} transition={{duration:.9,ease:[.16,1,.3,1]}}><SectionLabel key="label">05 How we work</SectionLabel><h2 key="heading">A clear path from first call to lasting outcome.</h2></motion.div><div className="process__steps">{processSteps.map(([number,title,description],index)=><motion.article key={`process-${number}`} initial={{opacity:0,y:22}} whileInView={{opacity:1,y:0}} viewport={{once:true,amount:.18}} transition={{duration:.8,ease:[.16,1,.3,1],delay:.04+(index*.06)}}><span key={`process-${number}-number`}>§ {number}</span><h3 key={`process-${number}-title`}>{title}</h3><p key={`process-${number}-description`}>{description}</p></motion.article>)}</div></div></section>}
 function Team(){return <section id="team" className="team"><div className="team__inner"><div className="team__principal"><motion.div className="team__portrait" initial={{opacity:0,y:26}} whileInView={{opacity:1,y:0}} viewport={{once:true,amount:.18}} transition={{duration:.9,ease:[.16,1,.3,1]}}><img src="/reference-image-5.webp" alt="Portrait of Briana A. Akpagu Esq., Principal Partner"/><span className="team__portrait-frame" aria-hidden="true"/></motion.div><motion.div className="team__copy" initial={{opacity:0,y:26}} whileInView={{opacity:1,y:0}} viewport={{once:true,amount:.18}} transition={{duration:.9,ease:[.16,1,.3,1],delay:.08}}><SectionLabel>06 Meet the Principal Partner</SectionLabel><h2>Briana A. Akpagu <em>Esq.</em></h2><div className="team__credentials"><span>Principal Partner</span><span>ACArb</span><span>DCP</span><span>Corporate &amp; Commercial Law</span></div><div className="team__bio"><p>Briana leads Brix Legal with a commitment to excellence, integrity and seamless client service. An Associate of the Chartered Institute of Arbitrators (ACArb) and a Data Compliance Professional (DCP), her practice spans corporate governance, statutory compliance, taxation and legacy building.</p><p>She helps clients navigate complexity with clarity and confidence — turning legal process into a genuine advantage for the businesses and individuals she represents, at home and abroad.</p></div><div className="team__links"><a className="team__linkedin" href="https://www.linkedin.com/in/brianaakpagu" target="_blank" rel="noreferrer"><Linkedin size={17} strokeWidth={1.9}/> Connect on LinkedIn</a><Link className="team__consultation" href="/consultation">Book a consultation <ArrowRight size={16} strokeWidth={1.9}/></Link></div></motion.div></div><div className="growing-team"><motion.div className="growing-team__heading" initial={{opacity:0,y:26}} whileInView={{opacity:1,y:0}} viewport={{once:true,amount:.18}} transition={{duration:.9,ease:[.16,1,.3,1]}}><SectionLabel>Growing team</SectionLabel><h2>Room for exceptional people.</h2><p>As Brix Legal grows, so does our bench. These seats are reserved for dedicated professionals who share our standard.</p></motion.div><div className="role-grid">{openRoles.map(([role,department],index)=><motion.article key={role} initial={{opacity:0,y:22}} whileInView={{opacity:1,y:0}} viewport={{once:true,amount:.18}} transition={{duration:.8,ease:[.16,1,.3,1],delay:.04+(index*.06)}}><span key={`${role}-avatar`} className="role-grid__avatar" aria-hidden="true"><UserPlus size={30} strokeWidth={1.9}/></span><h3 key={`${role}-title`}>{role}</h3><p key={`${role}-department`}>{department}</p><span key={`${role}-status`} className="role-grid__status">Position open</span></motion.article>)}</div></div></div></section>}
-function Testimonials(){const [active,setActive]=useState(0);const visible=useMemo(()=>[0,1,2].map(offset=>testimonials[(active+offset)%testimonials.length]),[active]);return <section id="insights" className="section testimonials"><div className="section-heading section-heading--split"><div><SectionLabel>07 Client experiences</SectionLabel><motion.h2 {...reveal}>What our clients say.</motion.h2></div><div className="slider-controls"><button type="button" aria-label="Previous testimonials" onClick={()=>setActive(value=>(value-1+testimonials.length)%testimonials.length)}><ArrowLeft size={18}/></button><button type="button" aria-label="Next testimonials" onClick={()=>setActive(value=>(value+1)%testimonials.length)}><ArrowRight size={18}/></button></div></div><div className="testimonial-grid">{visible.map((testimonial,index)=><motion.article {...reveal} key={`${testimonial.company}-${active}-${index}`}><span key={`${testimonial.company}-mark`} className="quote-mark">“</span><p key={`${testimonial.company}-quote`}>{testimonial.quote}</p><footer key={`${testimonial.company}-client`}><strong>{testimonial.company}</strong><span>{testimonial.sector}</span></footer></motion.article>)}</div></section>}
+function Testimonials(){
+  const viewportRef=useRef<HTMLDivElement>(null);
+  const trackRef=useRef<HTMLDivElement>(null);
+  const [activePage,setActivePage]=useState(0);
+  const [perView,setPerView]=useState(3);
+  const [shift,setShift]=useState(0);
+  const [paused,setPaused]=useState(false);
+  const [cycleKey,setCycleKey]=useState(0);
+  const pageCount=Math.ceil(testimonials.length/perView);
+
+  useEffect(()=>{
+    const updatePerView=()=>setPerView(window.innerWidth<=620?1:window.innerWidth<=1080?2:3);
+    updatePerView();
+    window.addEventListener("resize",updatePerView);
+    return()=>window.removeEventListener("resize",updatePerView);
+  },[]);
+
+  useEffect(()=>{
+    setActivePage(page=>Math.min(page,pageCount-1));
+  },[pageCount]);
+
+  useEffect(()=>{
+    const viewport=viewportRef.current;
+    const track=trackRef.current;
+    if(!viewport||!track)return;
+    const updateShift=()=>{
+      const firstCard=track.firstElementChild as HTMLElement|null;
+      if(!firstCard)return;
+      const cardStep=firstCard.getBoundingClientRect().width+24;
+      const maxShift=Math.max(0,track.scrollWidth-viewport.clientWidth);
+      setShift(Math.min(activePage*perView*cardStep,maxShift));
+    };
+    updateShift();
+    const observer=new ResizeObserver(updateShift);
+    observer.observe(viewport);
+    return()=>observer.disconnect();
+  },[activePage,perView]);
+
+  useEffect(()=>{
+    if(paused||pageCount<=1||window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+    const timer=window.setInterval(()=>setActivePage(page=>(page+1)%pageCount),5500);
+    return()=>window.clearInterval(timer);
+  },[cycleKey,pageCount,paused]);
+
+  const goToPage=(page:number)=>{
+    setActivePage((page+pageCount)%pageCount);
+    setCycleKey(value=>value+1);
+  };
+
+  return <section id="insights" className="section testimonials"><div className="testimonials__inner"><motion.div className="testimonials__heading" initial={{opacity:0,y:26}} whileInView={{opacity:1,y:0}} viewport={{once:true,amount:.18}} transition={{duration:.9,ease:[.16,1,.3,1]}}><SectionLabel>07 Some of our esteemed clients</SectionLabel><h2>The measure of seamless practice.</h2></motion.div><motion.div className="testimonials__carousel" initial={{opacity:0,y:26}} whileInView={{opacity:1,y:0}} viewport={{once:true,amount:.18}} transition={{duration:.9,ease:[.16,1,.3,1],delay:.08}} onMouseEnter={()=>setPaused(true)} onMouseLeave={()=>setPaused(false)}><div ref={viewportRef} className="testimonials__viewport"><div ref={trackRef} className="testimonials__track" style={{transform:`translateX(-${shift}px)`}}>{testimonials.map(testimonial=><article className="testimonial-card" key={testimonial.company}><div className="testimonial-card__quote" aria-hidden="true">“</div><p>{testimonial.quote}</p><div className="testimonial-card__client"><span>{testimonial.initials}</span><div><strong>{testimonial.company}</strong><small>{testimonial.sector}</small></div></div></article>)}</div></div><div className="testimonials__controls"><div className="testimonials__dots" aria-label="Testimonial pages">{Array.from({length:pageCount},(_,index)=><button className={activePage===index?"is-active":""} type="button" key={`testimonial-page-${index}`} aria-label={`Show testimonial page ${index+1}`} aria-current={activePage===index?"true":undefined} onClick={()=>goToPage(index)}/>)}</div><div><button type="button" aria-label="Previous testimonials" onClick={()=>goToPage(activePage-1)}><ArrowLeft size={19} strokeWidth={1.9}/></button><button type="button" aria-label="Next testimonials" onClick={()=>goToPage(activePage+1)}><ArrowRight size={19} strokeWidth={1.9}/></button></div></div></motion.div></div></section>
+}
 function Careers(){return <section id="careers" className="section section--dark careers"><div><SectionLabel>08 Careers</SectionLabel><motion.h2 {...reveal}>Build a legal career with purpose.</motion.h2><motion.p {...reveal}>We&apos;re always interested in thoughtful lawyers and legal professionals who care about detail, integrity and excellent client service.</motion.p></div><motion.div {...reveal} className="careers__action"><a className="button button--light" href="mailto:brixlegal@gmail.com?subject=Career%20Application%20-%20Brix%20Legal">Send your CV <Mail size={17}/></a><span>brixlegal@gmail.com</span></motion.div></section>}
 function Contact(){return <section id="contact" className="section contact"><div><SectionLabel>09 Contact</SectionLabel><motion.h2 {...reveal}>Let&apos;s discuss your legal needs.</motion.h2><motion.p {...reveal} className="section-intro">Start with a consultation. We&apos;ll listen carefully, assess the matter and show you the clearest path forward.</motion.p><div className="contact__details"><a href="mailto:brixlegal@gmail.com"><Mail size={18}/> brixlegal@gmail.com</a><a href="https://wa.me/2349038103995" target="_blank" rel="noreferrer"><MessageCircle size={18}/> +234 809 344 6492</a><span><MapPin size={18}/> Abuja · Calabar, Nigeria</span></div></div><motion.div {...reveal} className="contact__card"><h3>Ready when you are.</h3><p>Choose a convenient time and tell us briefly what you need help with.</p><Link className="button button--primary" href="/consultation">Book Consultation <ArrowRight size={17}/></Link></motion.div></section>}
 function Footer(){return <footer className="footer"><Brand/><div><a href="#about">About</a><a href="#practice">Practice Areas</a><a href="#team">Team</a><a href="#careers">Careers</a><a href="#contact">Contact</a></div><p>© {new Date().getFullYear()} Brix Legal Practice &amp; Consultancy. All rights reserved.</p></footer>}
