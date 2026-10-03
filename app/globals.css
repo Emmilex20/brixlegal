@@ -282,9 +282,9 @@ main {
 .section h2 {
   color: var(--ink);
   font-family: var(--serif);
+  font-optical-sizing: auto;
   font-weight: 600;
   letter-spacing: -0.025em;
-  text-wrap: balance;
 }
 
 .hero h1 {
@@ -292,6 +292,7 @@ main {
   margin: 23px 0 0;
   font-size: clamp(58px, 5.35vw, 74px);
   line-height: 1.02;
+  text-wrap: wrap;
 }
 
 .hero h1 em {
@@ -345,9 +346,13 @@ main {
   white-space: nowrap;
 }
 
-.hero__portrait {
+.hero__visual {
   position: relative;
   min-width: 0;
+}
+
+.hero__portrait {
+  position: relative;
   aspect-ratio: 820 / 1011;
   overflow: hidden;
   border-radius: 15px;
@@ -365,9 +370,10 @@ main {
 .hero__watermark {
   position: absolute;
   top: 48px;
-  left: -43px;
-  width: 90px;
-  height: 90px;
+  left: -46px;
+  z-index: 2;
+  width: 92px;
+  height: auto;
   object-fit: contain;
   filter: drop-shadow(0 13px 22px rgba(233, 124, 51, 0.22));
 }
@@ -1992,8 +1998,12 @@ main {
     max-width: 650px;
   }
 
-  .hero__portrait {
+  .hero__visual {
     width: min(540px, 100%);
+  }
+
+  .hero__portrait {
+    width: 100%;
   }
 
   .section {
@@ -2162,7 +2172,7 @@ main {
     grid-column: 1 / -1;
   }
 
-  .hero__portrait {
+  .hero__visual {
     display: none;
   }
 

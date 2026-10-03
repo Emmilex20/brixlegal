@@ -42,48 +42,56 @@ const navItems = [
 
 const reasons = [
   {
+    id: "seamless-practice",
     title: "Seamless Practice",
     description:
       "We make your legal process as smooth and hassle-free as possible, from first consultation to final resolution.",
     icon: Route,
   },
   {
+    id: "client-centred",
     title: "Client-Centred",
     description:
       "We pride ourselves on nurturing relationships, giving clients the best experience and ensuring partnership longevity.",
     icon: HeartHandshake,
   },
   {
+    id: "legal-expertise",
     title: "Legal Expertise",
     description:
       "Informed guidance and opinions drawn from extensive experience across the corporate and commercial sector.",
     icon: Award,
   },
   {
+    id: "legacy-building",
     title: "Legacy Building",
     description:
       "We structure your business, assets and agreements to stand the test of time and transition seamlessly.",
     icon: Landmark,
   },
   {
+    id: "detail-oriented",
     title: "Detail-Oriented",
     description:
       "A thorough, meticulous approach crafted with care — so that no detail ever goes unnoticed.",
     icon: SearchCheck,
   },
   {
+    id: "attorney-client-privilege",
     title: "Attorney-Client Privilege",
     description:
       "All confidential communications conducted to provide legal advice are duly and rigorously protected.",
     icon: LockKeyhole,
   },
   {
+    id: "corporate-governance",
     title: "Corporate Governance",
     description:
       "We help businesses establish sound governance — accountability, transparency and compliance at every level.",
     icon: Building2,
   },
   {
+    id: "quick-legal-solutions",
     title: "Quick Legal Solutions",
     description:
       "Prompt solutions when you need them — reach us by email, WhatsApp or a scheduled appointment.",
@@ -352,19 +360,22 @@ function Hero() {
         </motion.div>
       </div>
 
-      <motion.div {...reveal} className="hero__portrait">
-        <img
-          className="hero__photo"
-          src="/reference-image-3.webp"
-          alt="Briana A. Akpagu Esq., Principal Partner of Brix Legal"
-        />
+      <motion.div {...reveal} className="hero__visual">
         <img className="hero__watermark" src="/brix-legal-emblem.webp" alt="" aria-hidden="true" />
-        <div className="hero__identity">
-          <img src="/brix-legal-emblem.webp" alt="" aria-hidden="true" />
-          <span>
-            <strong>Briana A. Akpagu</strong>
-            <small>Principal Partner · ACArb · DCP</small>
-          </span>
+
+        <div className="hero__portrait">
+          <img
+            className="hero__photo"
+            src="/reference-image-3.webp"
+            alt="Briana A. Akpagu Esq., Principal Partner of Brix Legal"
+          />
+          <div className="hero__identity">
+            <img src="/brix-legal-emblem.webp" alt="" aria-hidden="true" />
+            <span>
+              <strong>Briana A. Akpagu</strong>
+              <small>Principal Partner · ACArb · DCP</small>
+            </span>
+          </div>
         </div>
       </motion.div>
     </section>
@@ -448,8 +459,14 @@ function WhyBrix() {
         truly value our clients.
       </motion.p>
       <div className="reason-grid">
-        {reasons.map(({ title, description, icon: Icon }) => (
-          <motion.article {...reveal} key={title}>
+        {reasons.map(({ id, title, description, icon: Icon }) => (
+          <motion.article
+            key={id}
+            initial={reveal.initial}
+            whileInView={reveal.whileInView}
+            viewport={reveal.viewport}
+            transition={reveal.transition}
+          >
             <span className="reason-grid__icon">
               <Icon size={27} strokeWidth={1.7} />
             </span>
