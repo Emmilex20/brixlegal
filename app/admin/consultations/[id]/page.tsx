@@ -1,0 +1,44 @@
+import Link from "next/link";
+import { notFound, redirect } from "next/navigation";
+import { ArrowLeft, BriefcaseBusiness, CalendarDays, Mail, MapPin, Phone, UserRound } from "lucide-react";
+import { createClient } from "../../../../lib/supabase/server";
+import ConsultationManager from "./ConsultationManager";
+import "../../admin.css";
+
+export default async function ConsultationDetail({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) redirect("/admin/login");
+  const { data: profile } = await supabase.from("admin_profiles").select("id,full_name,role").eq("id", user.id).maybeSingle();
+  if (!profile) redirect("/admin/login?unauthorized=1");
+
+  const [{ data: consultation }, { data: admins }, { data: notes }, { data: history }] = await Promise.all([
+    supabase.from("consultations").select("*").eq("id", id).maybeSingle(),
+    supabase.from("admin_profiles").select("id,full_name,role").order("full_name"),
+    supabase.from("consultation_notes").select("id,note,created_at,author_id,author:admin_profiles(full_name)").eq("consultation_id", id).order("created_at", { ascending: false }),
+    supabase.from("consultation_status_history").select("id,from_status,to_status,created_at").eq("consultation_id", id).order("created_at", { ascending: false }),
+  ]);
+  if (!consultation) notFound();
+
+  return <main className="admin-page admin-detail-page">
+    <header className="admin-detail-hero">
+      <Link href="/admin" className="admin-back"><ArrowLeft size={17}/>Back to dashboard</Link>
+      <div className="admin-detail-title"><div><span className="consult-panel__eyebrow">Consultation · {consultation.reference}</span><h1>{consultation.full_name}</h1><p>{consultation.practice_area} · submitted {new Date(consultation.created_at).toLocaleDateString()}</p></div><span className={`admin-status admin-status--${consultation.status}`}>{consultation.status.replaceAll("_", " ")}</span></div>
+    </header>
+
+    <div className="admin-detail-layout">
+      <div className="admin-detail-main">
+        <section className="admin-detail-card"><div className="admin-section-head"><div><span className="consult-panel__eyebrow">Client</span><h2>Contact & matter</h2></div><UserRound size={22}/></div>
+          <div className="admin-info-grid"><div><Mail/><span>Email</span><a href={`mailto:${consultation.email}`}>{consultation.email}</a></div><div><Phone/><span>Phone</span><a href={`tel:${consultation.phone}`}>{consultation.phone}</a></div><div><MapPin/><span>Office</span><strong>{consultation.office}</strong></div><div><BriefcaseBusiness/><span>Client type</span><strong>{consultation.client_status}</strong></div></div>
+          <div className="admin-matter"><span>Matter summary</span><p>{consultation.matter}</p></div>
+        </section>
+        <ConsultationManager id={id} initialStatus={consultation.status} initialDate={consultation.preferred_date} initialTime={consultation.preferred_time} initialAssignedTo={consultation.assigned_to} admins={admins ?? []} notes={(notes ?? []) as any}/>
+      </div>
+      <aside className="admin-detail-side">
+        <section className="admin-detail-card"><span className="consult-panel__eyebrow">Appointment</span><h3>{consultation.preferred_date}</h3><p>{consultation.preferred_time}</p><div className="admin-side-row"><CalendarDays size={17}/><span>{consultation.consultation_type}</span></div><div className="admin-side-row"><span>Urgency</span><strong>{consultation.urgency}</strong></div></section>
+        <section className="admin-detail-card"><span className="consult-panel__eyebrow">Activity</span><h3>Status timeline</h3><div className="admin-timeline">{(history ?? []).length ? history!.map((h) => <div key={h.id}><i/><p><strong>{h.to_status.replaceAll("_", " ")}</strong><small>{new Date(h.created_at).toLocaleString()}</small></p></div>) : <p className="admin-muted">No status changes yet.</p>}</div></section>
+      </aside>
+    </div>
+  </main>;
+}
