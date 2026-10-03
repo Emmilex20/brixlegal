@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 import { CalendarDays, Clock3, Scale, Users } from "lucide-react";
 import { createClient } from "../../lib/supabase/server";
+import "./admin.css";
 
 export default async function AdminPage() {
   const supabase = await createClient();
