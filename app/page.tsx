@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { ArrowLeft, ArrowRight, ArrowUp, Award, BookOpenCheck, Briefcase, Building2, Clapperboard, Download, ExternalLink, Gavel, Handshake, HeartHandshake, Instagram, KeyRound, Landmark, Lightbulb, Linkedin, LockKeyhole, Mail, MapPin, Menu, MessageCircle, Milestone, Network, ReceiptText, Route, Scale, Scale3d, SearchCheck, Send, ShieldCheck, Target, Telescope, UserPlus, X, Zap } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUp, Award, BookOpenCheck, Briefcase, Building2, CalendarCheck, Clapperboard, Download, ExternalLink, Gavel, Handshake, HeartHandshake, Instagram, KeyRound, Landmark, Lightbulb, Linkedin, LockKeyhole, Mail, MapPin, Menu, MessageCircle, Milestone, Network, ReceiptText, Route, Scale, Scale3d, SearchCheck, Send, ShieldCheck, Target, Telescope, UserPlus, X, Zap } from "lucide-react";
 import Link from "next/link";
 import { FormEvent, useEffect, useRef, useState } from "react";
 
@@ -132,7 +132,131 @@ function Careers() {
     </section>
   );
 }
-function Contact(){return <section id="contact" className="section contact"><div><SectionLabel>10 Get in touch</SectionLabel><motion.h2 {...reveal}>Let&apos;s discuss your legal needs.</motion.h2><motion.p {...reveal} className="section-intro">Start with a consultation. We&apos;ll listen carefully, assess the matter and show you the clearest path forward.</motion.p><div className="contact__details"><a href="mailto:brixlegal@gmail.com"><Mail size={18}/> brixlegal@gmail.com</a><a href="https://wa.me/2349038103995" target="_blank" rel="noreferrer"><MessageCircle size={18}/> +234 809 344 6492</a><span><MapPin size={18}/> Abuja · Calabar, Nigeria</span></div></div><motion.div {...reveal} className="contact__card"><h3>Ready when you are.</h3><p>Choose a convenient time and tell us briefly what you need help with.</p><Link className="button button--primary" href="/consultation">Book Consultation <ArrowRight size={17}/></Link></motion.div></section>}
+function Contact() {
+  const sendEnquiry = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    if (!form.reportValidity()) return;
+
+    const data = new FormData(form);
+    const name = String(data.get("name") ?? "");
+    const email = String(data.get("email") ?? "");
+    const area = String(data.get("area") ?? "General Legal Counsel");
+    const message = String(data.get("message") ?? "");
+    const subject = encodeURIComponent(`Consultation enquiry — ${area}`);
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nArea of interest: ${area}\n\n${message}`);
+    window.location.href = `mailto:brixlegal@gmail.com?subject=${subject}&body=${body}`;
+  };
+
+  return (
+    <section id="contact" className="contact">
+      <div className="contact__inner">
+        <motion.div
+          className="contact__heading"
+          initial={{ opacity: 0, y: 26 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.18 }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <SectionLabel>10 Get in touch</SectionLabel>
+          <h2>Let&apos;s make your legal process seamless.</h2>
+          <p>Reach us by email, WhatsApp, or schedule an appointment — we&apos;ll respond promptly.</p>
+        </motion.div>
+
+        <div className="contact__grid">
+          <motion.div
+            className="contact__information"
+            initial={{ opacity: 0, y: 26 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.18 }}
+            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <article className="contact__office">
+              <h3><MapPin aria-hidden="true" /> Abuja Office</h3>
+              <address>Mabushi, Abuja,<br />Federal Capital Territory, Nigeria</address>
+            </article>
+            <article className="contact__office">
+              <h3><MapPin aria-hidden="true" /> Calabar Office</h3>
+              <address>Brix Plaza, 2nd Floor, Parliamentary Extension,<br />Calabar, Cross River State, Nigeria</address>
+            </article>
+
+            <div className="contact__lines">
+              <div className="contact__line">
+                <Mail aria-hidden="true" />
+                <div><span>Email</span><a href="mailto:brixlegal@gmail.com">brixlegal@gmail.com</a></div>
+              </div>
+              <div className="contact__line">
+                <MessageCircle aria-hidden="true" />
+                <div><span>WhatsApp</span><a href="https://wa.me/2349038103995" target="_blank" rel="noreferrer">+234 903 810 3995</a></div>
+              </div>
+              <div className="contact__line">
+                <CalendarCheck aria-hidden="true" />
+                <div><span>Book a consultation</span><Link href="/consultation">Book on this website</Link></div>
+              </div>
+            </div>
+
+            <div className="contact__socials">
+              <a href="https://www.linkedin.com/company/brix-legal-practice-consultancy/" target="_blank" rel="noreferrer" aria-label="LinkedIn"><Linkedin aria-hidden="true" /></a>
+              <a href="https://www.instagram.com/brixlegal.ng" target="_blank" rel="noreferrer" aria-label="Instagram"><Instagram aria-hidden="true" /></a>
+              <a href="https://wa.me/2349038103995" target="_blank" rel="noreferrer" aria-label="WhatsApp"><MessageCircle aria-hidden="true" /></a>
+              <a href="mailto:brixlegal@gmail.com" aria-label="Email"><Mail aria-hidden="true" /></a>
+            </div>
+          </motion.div>
+
+          <motion.div
+            className="contact__book-card"
+            initial={{ opacity: 0, y: 26 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.18 }}
+            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.08 }}
+          >
+            <h3>Request a consultation</h3>
+            <p>Tell us briefly about your matter and we&apos;ll get back to you. Prefer to pick a time now? Use the booking link.</p>
+            <form noValidate onSubmit={sendEnquiry}>
+              <div className="contact__field">
+                <label htmlFor="contact-name">Full name</label>
+                <input id="contact-name" name="name" type="text" placeholder="Your name" required />
+              </div>
+              <div className="contact__field">
+                <label htmlFor="contact-email">Email address</label>
+                <input id="contact-email" name="email" type="email" placeholder="you@example.com" required />
+              </div>
+              <div className="contact__field">
+                <label htmlFor="contact-area">Area of interest</label>
+                <select id="contact-area" name="area">
+                  <option>Corporate Practice</option>
+                  <option>Commercial Law</option>
+                  <option>Regulatory &amp; Compliance</option>
+                  <option>Taxation</option>
+                  <option>Real Estate &amp; Property</option>
+                  <option>Dispute Resolution</option>
+                  <option>Intellectual Property</option>
+                  <option>General Legal Counsel</option>
+                </select>
+              </div>
+              <div className="contact__field">
+                <label htmlFor="contact-message">How can we help?</label>
+                <textarea id="contact-message" name="message" placeholder="Briefly describe your matter…" />
+              </div>
+              <button className="contact__submit" type="submit">Send enquiry <ExternalLink aria-hidden="true" /></button>
+              <p className="contact__form-note">This opens your email app addressed to Brix Legal.</p>
+            </form>
+
+            <div className="contact__newsletter">
+              <h4>Sign up for email updates</h4>
+              <p>Occasional legal insight and firm news — no spam.</p>
+              <div className="contact__newsletter-row">
+                <input type="text" placeholder="Name" aria-label="Name" />
+                <input type="email" placeholder="Email" aria-label="Email" />
+                <a href="https://brix-legal-practice-and-consultancy.kit.com/ccbf343215" target="_blank" rel="noreferrer">Subscribe</a>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
 function Footer(){return <footer className="footer"><Brand/><div><a href="#about">About</a><a href="#practice">Practice Areas</a><a href="#team">Team</a><a href="#careers">Careers</a><a href="#contact">Contact</a></div><p>© {new Date().getFullYear()} Brix Legal Practice &amp; Consultancy. All rights reserved.</p></footer>}
 function WhatsAppButton(){return <a className="floating-whatsapp" href="https://wa.me/2349038103995" target="_blank" rel="noreferrer" aria-label="Chat with Brix Legal on WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.999-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg></a>}
 function ScrollTop(){const [visible,setVisible]=useState(false);useEffect(()=>{const onScroll=()=>setVisible(window.scrollY>600);onScroll();window.addEventListener("scroll",onScroll,{passive:true});return()=>window.removeEventListener("scroll",onScroll)},[]);return <button className={`to-top${visible?" show":""}`} type="button" aria-label="Back to top" onClick={()=>window.scrollTo({top:0,behavior:"smooth"})}><ArrowUp size={20} strokeWidth={1.9}/></button>}
