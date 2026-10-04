@@ -39,7 +39,120 @@ const clientNames=testimonials.map(({company})=>company);
 function Brand({compact=false}:{compact?:boolean}){return <span className={compact?"brand brand--compact":"brand"}><img src="/brix-legal-emblem.webp" alt="" aria-hidden="true"/><span><strong>Brix Legal</strong><small>Practice &amp; Consultancy</small></span></span>}
 function SectionLabel({children}:{children:React.ReactNode}){const label=typeof children==="string"?children:"";const match=label.match(/^(\d{2})\s+(.+)$/);return <p className="section-label"><span className="section-label__mark">§{match?` ${match[1]}`:""}</span><span>{match?match[2]:children}</span></p>}
 function Counter({value,suffix=""}:{value:number;suffix?:string}){const ref=useRef<HTMLSpanElement>(null);const inView=useInView(ref,{once:true,amount:.75});const [displayValue,setDisplayValue]=useState(0);useEffect(()=>{if(!inView)return;let frame=0;let startTime:number|undefined;const duration=1400;const animate=(time:number)=>{startTime??=time;const progress=Math.min((time-startTime)/duration,1);const eased=1-Math.pow(1-progress,3);setDisplayValue(Math.round(value*eased));if(progress<1)frame=requestAnimationFrame(animate)};frame=requestAnimationFrame(animate);return()=>cancelAnimationFrame(frame)},[inView,value]);return <span ref={ref}>{displayValue}{suffix&&<span className="counter__suffix">{suffix}</span>}</span>}
-function Header(){const [menuOpen,setMenuOpen]=useState(false);const [scrolled,setScrolled]=useState(false);const [activeSection,setActiveSection]=useState("");useEffect(()=>{const h=()=>{setScrolled(window.scrollY>24);const offset=110;let current="";for(const item of navItems){const id=item.href.slice(1);const section=document.getElementById(id);if(section&&section.getBoundingClientRect().top<=offset)current=id}setActiveSection(current)};h();window.addEventListener("scroll",h,{passive:true});window.addEventListener("resize",h);return()=>{window.removeEventListener("scroll",h);window.removeEventListener("resize",h)}},[]);useEffect(()=>{document.body.style.overflow=menuOpen?"hidden":"";return()=>{document.body.style.overflow=""}},[menuOpen]);const closeMenu=()=>setMenuOpen(false);const activeStyle={color:"var(--orange-dark)",backgroundImage:"linear-gradient(var(--orange),var(--orange))",backgroundSize:"100% 2px",backgroundPosition:"left calc(100% + 9px)",backgroundRepeat:"no-repeat"};return <><header className={`site-header${scrolled?" site-header--scrolled":""}`}><a href="#home" aria-label="Brix Legal home" onClick={closeMenu}><Brand/></a><nav aria-label="Primary navigation">{navItems.map(item=>{const active=activeSection===item.href.slice(1);return <a key={item.href} href={item.href} aria-current={active?"page":undefined} style={active?activeStyle:undefined}>{item.label}</a>})}</nav><Link className="button button--primary header-booking" href="/consultation">Book Consultation</Link><button className="menu-toggle" type="button" aria-label="Open navigation" aria-expanded={menuOpen} onClick={()=>setMenuOpen(true)}><Menu size={23}/></button></header><button className={`menu-backdrop${menuOpen?" is-open":""}`} type="button" aria-label="Close navigation" onClick={closeMenu}/><aside className={`mobile-menu${menuOpen?" is-open":""}`} aria-label="Mobile navigation"><div className="mobile-menu__head"><a href="#home" aria-label="Brix Legal home" onClick={closeMenu}><Brand compact/></a><button type="button" aria-label="Close navigation" onClick={closeMenu}><X size={23}/></button></div><nav>{navItems.map(item=><a key={item.href} href={item.href} onClick={closeMenu}>{item.label}</a>)}</nav><Link className="button button--primary" href="/consultation" onClick={closeMenu}>Book Consultation</Link></aside></>}
+function Header() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 24);
+
+      const offset = 110;
+      let current = "";
+
+      for (const item of navItems) {
+        const section = document.getElementById(item.href.slice(1));
+
+        if (section && section.getBoundingClientRect().top <= offset) {
+          current = item.href.slice(1);
+        }
+      }
+
+      setActiveSection(current);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
+  const closeMenu = () => setMenuOpen(false);
+  const activeStyle = {
+    color: "var(--orange-dark)",
+    backgroundImage: "linear-gradient(var(--orange),var(--orange))",
+    backgroundSize: "100% 2px",
+    backgroundPosition: "left calc(100% + 9px)",
+    backgroundRepeat: "no-repeat",
+  };
+
+  return (
+    <>
+      <header
+        className={`site-header${scrolled ? " site-header--scrolled" : ""}${menuOpen ? " site-header--menu-open" : ""}`}
+      >
+        <a href="#home" aria-label="Brix Legal home" onClick={closeMenu}>
+          <Brand />
+        </a>
+
+        <nav aria-label="Primary navigation">
+          {navItems.map((item) => {
+            const active = activeSection === item.href.slice(1);
+
+            return (
+              <a
+                key={item.href}
+                href={item.href}
+                aria-current={active ? "page" : undefined}
+                style={active ? activeStyle : undefined}
+              >
+                {item.label}
+              </a>
+            );
+          })}
+        </nav>
+
+        <Link className="button button--primary header-booking" href="/consultation">
+          Book Consultation
+        </Link>
+
+        <button
+          className="menu-toggle"
+          type="button"
+          aria-label={menuOpen ? "Close navigation" : "Open navigation"}
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen((open) => !open)}
+        >
+          {menuOpen ? <X size={23} strokeWidth={1.7} /> : <Menu size={23} strokeWidth={1.7} />}
+        </button>
+      </header>
+
+      <button
+        className={`menu-backdrop${menuOpen ? " is-open" : ""}`}
+        type="button"
+        aria-label="Close navigation"
+        onClick={closeMenu}
+      />
+
+      <aside className={`mobile-menu${menuOpen ? " is-open" : ""}`} aria-label="Mobile navigation">
+        <nav>
+          {navItems.map((item) => (
+            <a key={item.href} href={item.href} onClick={closeMenu}>
+              {item.href === "#mission" ? "Mission & Vision" : item.label}
+            </a>
+          ))}
+        </nav>
+
+        <Link className="button button--primary" href="/consultation" onClick={closeMenu}>
+          Book Consultation
+        </Link>
+      </aside>
+    </>
+  );
+}
 function Hero(){return <section id="home" className="hero"><div className="hero__copy"><motion.div {...reveal}><SectionLabel>Brix Legal · Est. Nigeria</SectionLabel></motion.div><motion.h1 {...reveal}>For seamless <em>legal practice</em>, built to outlast today.</motion.h1><motion.p {...reveal} className="hero__lead">A multidisciplinary law firm delivering detail-driven corporate, commercial and compliance counsel to local and international clients — with the care of a partner and the precision of a specialist.</motion.p><motion.div {...reveal} className="button-row"><Link className="button button--primary" href="/consultation">Book Consultation <ArrowRight size={17}/></Link><a className="button button--outline" href="#practice">Our Services</a></motion.div><motion.div {...reveal} className="hero__stats"><div><strong>14</strong><span>Areas of practice</span></div><div><strong>2</strong><span>Offices · Abuja &amp; Calabar</span></div><div><strong>100%</strong><span>Client confidentiality</span></div></motion.div></div><motion.div {...reveal} className="hero__visual"><img className="hero__watermark" src="/reference-image-1.png" alt="" aria-hidden="true"/><div className="hero__portrait"><img className="hero__photo" src="/reference-image-3.webp" alt="Briana A. Akpagu Esq., Principal Partner of Brix Legal"/><div className="hero__identity"><img src="/brix-legal-emblem.webp" alt="" aria-hidden="true"/><span><strong>Briana A. Akpagu</strong><small>Principal Partner · ACArb · DCP</small></span></div></div></motion.div></section>}
 function ClientTicker(){const repeatedNames=[...clientNames,...clientNames];return <section className="client-ticker" aria-label="Trusted clients"><p>Trusted by esteemed clients</p><div className="client-ticker__window"><div className="client-ticker__track">{repeatedNames.map((name,index)=><span key={`${name}-${index}`}>{name}</span>)}</div></div></section>}
 function AboutFirm(){return <section id="about-firm" className="section about-firm"><div className="about-firm__grid"><motion.div {...reveal} className="about-firm__intro"><SectionLabel key="label">01 About the firm</SectionLabel><p key="lead" className="about-firm__lead">Brix Legal Practice and Consultancy is a multidisciplinary law firm — providing{" "}<em>informed consultation and excellent legal services</em> to both local and international clients.</p></motion.div><motion.div {...reveal} className="about-firm__copy"><p>We specialise in corporate practice, statutory compliance, commercial law, real estate, taxation, intellectual property and alternative dispute resolution — combining deep sector experience with a genuinely client-centred approach.</p><p>Our work goes beyond the matter in front of us. We structure your business, assets and agreements to stand the test of time, ensuring what you build outlasts you and transitions seamlessly to those you intend to benefit — legacy building, done right.</p><div className="signature"><div><strong>Briana A. Akpagu</strong><span>Principal Partner, Brix Legal</span></div></div></motion.div></div><motion.div {...reveal} className="about-firm__metrics"><div><strong><Counter value={14}/></strong><span>Areas of practice</span></div><div><strong><Counter value={2}/></strong><span>Offices — Abuja &amp; Calabar</span></div><div><strong><Counter value={200} suffix="+"/></strong><span>Esteemed clients served</span></div><div><strong><Counter value={100} suffix="%"/></strong><span>Confidential &amp; privileged</span></div></motion.div></section>}
