@@ -3216,13 +3216,33 @@ main {
 
   .about-firm__grid {
     margin-top: 0;
+    gap: 40px;
+  }
+
+  .about-firm {
+    padding: 72px 20px;
+  }
+
+  .about-firm .section-label::before {
+    width: 26px;
+    flex-basis: 26px;
   }
 
   .about-firm__lead {
-    font-size: 25px;
+    font-size: 22px;
+    line-height: 1.34;
   }
 
-  .about-firm__metrics,
+  .about-firm__copy {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .signature::before {
+    width: 40px;
+    flex-basis: 40px;
+  }
+
   .contact__offices,
   .mission__grid,
   .reason-grid,
@@ -3232,11 +3252,12 @@ main {
   }
 
   .about-firm__metrics {
-    gap: 34px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px 20px;
   }
 
   .about-firm__metrics strong {
-    font-size: 44px;
+    font-size: 38px;
   }
 
   .why-brix__heading {
