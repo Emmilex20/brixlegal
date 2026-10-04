@@ -1,7 +1,9 @@
 import "./globals.css";
 import "./consultation-success.css";
+import "./client-access.css";
 
 import type { Metadata } from "next";
+import ClientAccessButton from "./components/ClientAccessButton";
 
 export const metadata: Metadata = {
   title: "Brix Legal Practice & Consultancy — For Seamless Legal Practice",
@@ -15,7 +17,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        {children}
+        <ClientAccessButton />
+      </body>
     </html>
   );
 }
