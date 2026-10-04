@@ -3,6 +3,25 @@ import { createClient } from "../../../lib/supabase/server";
 import { sendBookingEmails } from "../../../lib/email";
 import { cleanText, rateLimit, validDate, validEmail, validTime } from "../../../lib/request-security";
 
+function normalizeAppointmentTime(value: string) {
+  const trimmed = value.trim();
+  if (validTime(trimmed)) return trimmed;
+
+  // Availability is presented to clients as values such as "09:00 AM".
+  // Convert that display value back to the 24-hour format expected by the
+  // database/RPC and server-side validator before creating the booking.
+  const match = trimmed.match(/^(\d{1,2}):(\d{2})\s*(AM|PM)$/i);
+  if (!match) return trimmed;
+
+  let hour = Number(match[1]);
+  const minute = match[2];
+  const period = match[3].toUpperCase();
+  if (hour < 1 || hour > 12) return trimmed;
+  if (period === "AM" && hour === 12) hour = 0;
+  if (period === "PM" && hour !== 12) hour += 12;
+  return `${String(hour).padStart(2, "0")}:${minute}`;
+}
+
 export async function POST(request: Request) {
   const limited = rateLimit(request, "consultation-create", 8, 15 * 60 * 1000);
   if (limited) return limited;
@@ -16,7 +35,7 @@ export async function POST(request: Request) {
     const matter = cleanText(body.matter, 5000);
     const consultationType = cleanText(body.consultationType, 80);
     const date = cleanText(body.date, 10);
-    const time = cleanText(body.time, 8);
+    const time = normalizeAppointmentTime(cleanText(body.time, 16));
     if (!fullName || !email || !phone || !office || !practiceArea || !matter || !consultationType || !date || !time)
       return NextResponse.json({ error: "Please complete all required fields." }, { status: 400 });
     if (!validEmail(email)) return NextResponse.json({ error: "Please enter a valid email address." }, { status: 400 });
