@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { createClient } from "../../../../lib/supabase/server";
 
+type AvailableSlotRow = { slot_time?: string | null } | string;
+
 export async function GET(request: Request) {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
@@ -26,9 +28,10 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: "Could not load available times." }, { status: 500 });
   }
 
-  const slots = (data ?? [])
-    .map((row: { slot_time?: string } | string) => typeof row === "string" ? row : row.slot_time)
-    .filter((slot): slot is string => typeof slot === "string" && slot.length > 0);
+  const rows: AvailableSlotRow[] = Array.isArray(data) ? (data as AvailableSlotRow[]) : [];
+  const slots = rows
+    .map((row): string | undefined => typeof row === "string" ? row : row.slot_time ?? undefined)
+    .filter((slot: string | undefined): slot is string => typeof slot === "string" && slot.length > 0);
 
   return NextResponse.json({ slots });
 }
