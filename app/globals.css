@@ -2812,6 +2812,34 @@ main {
     border-color: var(--line);
   }
 
+  .site-header.site-header--menu-open {
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
+  }
+
+  .site-header .brand {
+    gap: 12px;
+  }
+
+  .site-header .brand > img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .site-header .brand strong {
+    font-size: 19px;
+    line-height: 17px;
+  }
+
+  .site-header .brand small {
+    margin-top: 3px;
+    font-size: 9.5px;
+    line-height: 17px;
+    letter-spacing: 2.66px;
+  }
+
   .site-header > nav,
   .header-booking {
     display: none;
@@ -2819,8 +2847,8 @@ main {
 
   .menu-toggle {
     display: grid;
-    width: 43px;
-    height: 43px;
+    width: 44px;
+    height: 44px;
     place-items: center;
     padding: 0;
     border: 1px solid var(--line);
@@ -2828,84 +2856,96 @@ main {
     background: var(--white);
     color: var(--ink);
     cursor: pointer;
+    transition:
+      border-color 0.3s var(--ease),
+      color 0.3s var(--ease),
+      transform 0.35s var(--ease);
+  }
+
+  .site-header--menu-open .menu-toggle {
+    border-color: var(--ink);
+  }
+
+  .menu-toggle:hover,
+  .menu-toggle:focus-visible {
+    border-color: var(--orange-dark);
+    color: var(--orange-dark);
   }
 
   .menu-backdrop {
     position: fixed;
     inset: 0;
-    z-index: 190;
+    z-index: 98;
     display: block;
     border: 0;
-    background: rgba(18, 15, 12, 0.66);
+    background: rgba(23, 19, 14, 0.4);
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.3s var(--ease);
+    visibility: hidden;
+    transition:
+      opacity 0.4s,
+      visibility 0.4s;
   }
 
   .menu-backdrop.is-open {
     opacity: 1;
     pointer-events: auto;
+    visibility: visible;
   }
 
   .mobile-menu {
     position: fixed;
     inset: 0 0 0 auto;
-    z-index: 200;
+    z-index: 99;
     display: flex;
-    width: min(360px, 88vw);
+    width: min(86vw, 380px);
     flex-direction: column;
-    padding: 20px 28px 30px;
+    gap: 6px;
+    padding: 104px 32px 40px;
+    overflow-y: auto;
     background: var(--white);
-    box-shadow: -30px 0 60px -30px rgba(23, 19, 14, 0.4);
-    transform: translateX(102%);
-    transition: transform 0.35s var(--ease);
+    box-shadow: 0 30px 70px -30px rgba(23, 19, 14, 0.3);
+    transform: translateX(100%);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .mobile-menu.is-open {
     transform: translateX(0);
   }
 
-  .mobile-menu__head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 15px;
-  }
-
-  .mobile-menu__head > a {
-    text-decoration: none;
-  }
-
-  .mobile-menu__head > button {
-    display: grid;
-    width: 42px;
-    height: 42px;
-    place-items: center;
-    padding: 0;
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    background: var(--white);
-    color: var(--ink);
-    cursor: pointer;
-  }
-
   .mobile-menu nav {
     display: flex;
     flex-direction: column;
-    margin-top: 34px;
+    gap: 6px;
   }
 
   .mobile-menu nav a {
-    padding: 15px 0;
-    border-bottom: 1px solid var(--line);
+    padding: 12px 0;
+    border-bottom: 1px solid #f1ece4;
     color: var(--ink);
     font-family: var(--serif);
-    font-size: 20px;
+    font-size: 22px;
+    line-height: 1.7;
     text-decoration: none;
+    transition:
+      color 0.3s var(--ease),
+      padding-left 0.35s var(--ease);
+  }
+
+  .mobile-menu nav a:hover,
+  .mobile-menu nav a:focus-visible {
+    padding-left: 6px;
+    color: var(--orange-dark);
   }
 
   .mobile-menu > .button {
-    margin-top: 28px;
+    min-height: 56px;
+    margin-top: 14px;
+    padding: 12px 24px;
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
   }
 
   .hero {
